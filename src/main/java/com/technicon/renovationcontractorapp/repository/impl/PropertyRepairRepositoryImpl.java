@@ -7,7 +7,7 @@ import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository
  * 	implementation and adds the more specific update methods
  * 	that the property-repair repository needs.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class PropertyRepairRepositoryImpl extends RepositoryImpl implements PropertyRepairRepository {
 

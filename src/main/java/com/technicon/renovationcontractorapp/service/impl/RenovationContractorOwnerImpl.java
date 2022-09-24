@@ -5,7 +5,7 @@ import com.technicon.renovationcontractorapp.service.RenovationContractorOwnerSe
 /**
  * 	This is the implementation of the owners services.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class RenovationContractorOwnerImpl implements RenovationContractorOwnerService {
 

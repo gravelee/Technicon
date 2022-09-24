@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
  * 	This class represents the repairs that a property can have
  * 	(a property can have many repairs).
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class PropertyRepair {
 

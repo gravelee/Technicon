@@ -5,7 +5,7 @@ import com.technicon.renovationcontractorapp.service.RenovationContractorAdminSe
 /**
  * 	This is the implementation of the administrators services.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class RenovationContractorAdminServiceImpl implements RenovationContractorAdminService {
 

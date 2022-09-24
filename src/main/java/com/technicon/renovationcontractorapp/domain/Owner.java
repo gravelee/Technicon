@@ -7,7 +7,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 	extend the functionality of the owner based on the 
  * 	services or client wants us to implement.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class Owner extends User {
 

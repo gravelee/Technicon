@@ -4,7 +4,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 	This is the class that represents the property itself.
  * 	Properties are owned by the owners users of the system.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class Property {
 
