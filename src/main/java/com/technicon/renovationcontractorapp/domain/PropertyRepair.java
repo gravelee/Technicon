@@ -3,6 +3,12 @@ package com.technicon.renovationcontractorapp.domain;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * 	This class represents the repairs that a property can have
+ * 	(a property can have many repairs).
+ * 
+ * 	@author Grproth
+ */
 public class PropertyRepair {
 
 	private LocalDateTime dateTime;
