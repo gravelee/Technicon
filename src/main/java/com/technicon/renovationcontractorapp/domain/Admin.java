@@ -6,7 +6,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 	other than the ones we have in the User class. But we
  * 	extend the functionality of the administrator based
  * 	on the interpretation of the data our client asked.
- * 
+ *  Hello world
  * 	@author Grproth
  */
 public class Admin extends User {
