@@ -5,7 +5,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 	There will be no objects of this class. The only objects will
  * 	be the children of this classes extender classes Admin & Owner.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public abstract class User {
 

@@ -7,7 +7,7 @@ package com.technicon.renovationcontractorapp.repository;
  * 	interfaces that extend this one cause they are
  * 	more specific.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public interface Repository {
 

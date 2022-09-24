@@ -5,7 +5,7 @@ package com.technicon.renovationcontractorapp.repository;
  * 	It represents the user repository with the specific
  * 	update & read methods of some its attributes.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public interface UserRepository extends Repository{
 

@@ -7,7 +7,7 @@ import com.technicon.renovationcontractorapp.repository.Repository;
  * 	It is abstract cause we will never instantiate this class.
  * 	We will instantiate its children only.
  * 
- * @author Grproth
+ * @author Grproth, skroutzzz
  */
 public abstract class RepositoryImpl implements Repository {
 

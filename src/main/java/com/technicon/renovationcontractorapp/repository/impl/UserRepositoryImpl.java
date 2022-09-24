@@ -7,7 +7,7 @@ import com.technicon.renovationcontractorapp.repository.UserRepository;
  * 	implementation and adds the more specific update methods
  * 	that the user repository needs.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz
  */
 public class UserRepositoryImpl extends RepositoryImpl implements UserRepository {
 
