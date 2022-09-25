@@ -9,6 +9,6 @@ package com.technicon.renovationcontractorapp.repository;
  */
 public interface UserRepository extends Repository{
 
-	// read based on email
+	// 	read based on email
 	//	updates for address, email, password
 }

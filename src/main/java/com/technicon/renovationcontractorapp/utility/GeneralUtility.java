@@ -16,5 +16,5 @@ package com.technicon.renovationcontractorapp.utility;
  */
 public class GeneralUtility {
 
-	
+	// validation email, vat, address ..throws
 }

@@ -16,6 +16,8 @@ public class RenovationContractorApp{
 		// Create the Properties list
 		// Create the PropertyRepair list
 		
-    	// Inject the 
+    	// Inject the lists to the serviceImpl
+		
+		// create users and test cases
     }
 }

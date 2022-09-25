@@ -12,6 +12,5 @@ package com.technicon.renovationcontractorapp.repository;
 public interface Repository {
 
 	// add record
-	
 	// delete record
 }
