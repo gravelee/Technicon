@@ -11,11 +11,11 @@ package com.technicon.renovationcontractorapp.domain;
  */
 public class Owner extends User {
 
-	private final long vatNumber;
+	private final String vatNumber;
 	
 	public Owner( final String name, final String surname, 
 		final String address, final String phoneNumber, final String email, 
-		final String username, final String password, final long vatNumber) {
+		final String username, final String password, final String vatNumber) {
 		
 		super(name, surname, address, phoneNumber, 
 				email, username, password);

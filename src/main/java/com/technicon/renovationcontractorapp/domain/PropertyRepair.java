@@ -16,14 +16,14 @@ public class PropertyRepair {
 	private RepairType repairType;
 	private StatusType statusType;
 	private BigDecimal cost;
-	private long ownerVatNumber;
+	private String ownerVatNumber;
 	private long pIdNumber;
 	private String repairDesc;
 	
 	public PropertyRepair( final LocalDateTime datetime, 
 		final String summary, final RepairType repairType, 
 		final StatusType statusType, final BigDecimal cost, 
-		final long ownerVatNumber, final long pIdNumber, 
+		final String ownerVatNumber, final long pIdNumber, 
 		final String repairDesc) {
 		
 		this.dateTime = datetime;
@@ -76,11 +76,11 @@ public class PropertyRepair {
 		this.cost = cost;
 	}
 
-	public long getOwnerVatNumber() {
+	public String getOwnerVatNumber() {
 		return ownerVatNumber;
 	}
 
-	public void setOwnerVatNumber(long ownerVatNumber) {
+	public void setOwnerVatNumber(String ownerVatNumber) {
 		this.ownerVatNumber = ownerVatNumber;
 	}
 

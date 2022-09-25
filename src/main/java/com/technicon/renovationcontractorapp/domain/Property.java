@@ -12,11 +12,11 @@ public class Property {
 	private String address;
 	private int constructionYears;
 	private PropertyType propertyType;
-	private long ownersVatNumber;
+	private String ownersVatNumber;
 	
 	public Property( final long pIdNumber, final String address, 
 			final int constructionYears, final PropertyType propertyType,
-			final long ownersVatNumber) {
+			final String ownersVatNumber) {
 		
 		this.pIdNumber = pIdNumber;
 		this.address = address;
@@ -57,11 +57,11 @@ public class Property {
 		this.propertyType = propertyType;
 	}
 
-	public long getOwnersVatNumber() {
+	public String getOwnersVatNumber() {
 		return ownersVatNumber;
 	}
 
-	public void setOwnersVatNumber(long ownersVatNumber) {
+	public void setOwnersVatNumber(String ownersVatNumber) {
 		this.ownersVatNumber = ownersVatNumber;
 	}
 	
