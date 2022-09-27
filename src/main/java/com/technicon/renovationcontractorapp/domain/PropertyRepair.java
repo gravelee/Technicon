@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * 
  * 	@author Grproth, skroutzzz
  */
-public class PropertyRepair {
+public class PropertyRepair extends Record {
 
 	private LocalDateTime dateTime;
 	private String summary;

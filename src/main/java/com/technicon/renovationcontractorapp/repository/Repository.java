@@ -1,5 +1,7 @@
 package com.technicon.renovationcontractorapp.repository;
 
+import com.technicon.renovationcontractorapp.domain.Record;
+
 /**
  * 	This is the interface that defines the CRUD
  * 	methods that a repository needs to be implemented.
@@ -11,6 +13,6 @@ package com.technicon.renovationcontractorapp.repository;
  */
 public interface Repository {
 
-	// add record
-	// delete record
+	boolean addRecord( Record record); 
+	boolean deleteRecord( Record record);
 }

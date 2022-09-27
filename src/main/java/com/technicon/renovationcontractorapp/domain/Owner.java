@@ -23,6 +23,11 @@ public class Owner extends User {
 		this.vatNumber = vatNumber;
 	}
 
+	public String getVatNumber() {
+		
+		return vatNumber;
+	}
+	
 	@Override
 	public String header() {
 		

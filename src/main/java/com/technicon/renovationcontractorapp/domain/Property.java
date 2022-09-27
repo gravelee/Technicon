@@ -6,7 +6,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 
  * 	@author Grproth, skroutzzz
  */
-public class Property {
+public class Property extends Record {
 
 	private long pIdNumber;
 	private String address;

@@ -7,7 +7,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 
  * 	@author Grproth, skroutzzz
  */
-public abstract class User {
+public abstract class User extends Record {
 
 	private final static int userIdLength = 10;
 	private static long numberOfUsers = 0;
@@ -39,12 +39,32 @@ public abstract class User {
 	
 	// getters
 	
-	protected long getNumberOfUsers() {
+	public long getNumberOfUsers() {
 		
 		return numberOfUsers;
 	}
 	
+	public String getUserId() {
+		
+		return userId;
+	}
+	
 	/*
+	public String getAddress() {
+		
+		return address;
+	}*/
+	
+	public String getEmail() {
+		
+		return email;
+	}
+	/*
+	public String getPassword() {
+		
+		return password;
+	}*/
+	
 	public void setAddress( String address) {
 		
 		this.address = address;
@@ -59,10 +79,9 @@ public abstract class User {
 		
 		this.password = password;
 	}
-	*/
 	
-	protected String header() {
-		
+	public String header() {
+	
 		return "userId, name, surname, address, phoneNumber, "
 				+ "email, username, password";
 	}
