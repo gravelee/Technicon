@@ -23,7 +23,8 @@ public class AdminServiceImpl extends UserServiceImpl implements AdminService {
 
 	private UserRepository userRepository;
 	
-	AdminServiceImpl(UserRepository userRepository, PropertyRepository properyRepository,
+	AdminServiceImpl( UserRepository userRepository, 
+			PropertyRepository properyRepository,
 			PropertyRepairRepository properyRepairRepository) {
 
 		super(properyRepository, properyRepairRepository);
@@ -32,8 +33,10 @@ public class AdminServiceImpl extends UserServiceImpl implements AdminService {
 
 	@Override
 	public boolean addUser(User user) {
-
+		
 		return false;
+
+		//userRepository.addRecord(user);
 	}
 
 	@Override
@@ -49,85 +52,85 @@ public class AdminServiceImpl extends UserServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean updateUserAddress(User user, String address) {
+	public boolean updateUserAddress(long userId, String address) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updateUserEmail(User user, String email) {
+	public boolean updateUserEmail(long userId, String email) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updateUserPassword(User user, String password) {
+	public boolean updateUserPassword(long userId, String password) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyAddress(Property property, String address) {
+	public boolean updatePropertyAddress(long propertyId, String address) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyConstructionYear(Property property, LocalDate constructionYear) {
+	public boolean updatePropertyConstructionYear(long propertyId, LocalDate constructionYear) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyType(Property property, PropertyType propertyType) {
+	public boolean updatePropertyType(long propertyId, PropertyType propertyType) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyVatNumber(Property property, String vatNumber) {
+	public boolean updatePropertyVatNumber(long propertyId, String vatNumber) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairDateTime(Property property, LocalDate dateTime) {
+	public boolean updatePropertyRepairDateTime(long propertyRepairId, LocalDate dateTime) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairSummary(Property property, String summary) {
+	public boolean updatePropertyRepairSummary(long propertyRepairId, String summary) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairType(Property property, RepairType repairType) {
+	public boolean updatePropertyRepairType(long propertyRepairId, RepairType repairType) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairStatusType(Property property, StatusType statusType) {
+	public boolean updatePropertyRepairStatusType(long propertyRepairId, StatusType statusType) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairCost(Property property, BigDecimal cost) {
+	public boolean updatePropertyRepairCost(long propertyRepairId, BigDecimal cost) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairVatNumber(Property property, String vatNumber) {
+	public boolean updatePropertyRepairVatNumber(long propertyRepairId, String vatNumber) {
 
 		return false;
 	}
 
 	@Override
-	public boolean updatePropertyRepairDesc(Property property, String repairDesc) {
+	public boolean updatePropertyRepairDesc(long propertyRepairId, String repairDesc) {
 
 		return false;
 	}

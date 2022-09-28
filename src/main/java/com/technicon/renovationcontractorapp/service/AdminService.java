@@ -17,28 +17,28 @@ import com.technicon.renovationcontractorapp.domain.User;
  * 
  * 	@author Grproth, skroutzzz
  */
-public interface AdminService {
+public interface AdminService extends UserService {
 
 	boolean addUser( User user);
 	boolean addProperty( Property property);
 	boolean addPropertyRepair( PropertyRepair propertyRepair);
 	
-	boolean updateUserAddress( User user, String address);
-	boolean updateUserEmail( User user, String email);
-	boolean updateUserPassword( User user, String password);
+	boolean updateUserAddress( long userId, String address);
+	boolean updateUserEmail( long userId, String email);
+	boolean updateUserPassword( long userId, String password);
 		
-	boolean updatePropertyAddress( Property property, String address);
-	boolean updatePropertyConstructionYear( Property property, LocalDate constructionYear);
-	boolean updatePropertyType( Property property, PropertyType propertyType);
-	boolean updatePropertyVatNumber( Property property, String vatNumber);
+	boolean updatePropertyAddress( long propertyId, String address);
+	boolean updatePropertyConstructionYear( long propertyId, LocalDate constructionYear);
+	boolean updatePropertyType( long propertyId, PropertyType propertyType);
+	boolean updatePropertyVatNumber( long propertyId, String vatNumber);
 	
-	boolean updatePropertyRepairDateTime( Property property, LocalDate dateTime);
-	boolean updatePropertyRepairSummary( Property property, String summary);
-	boolean updatePropertyRepairType( Property property, RepairType repairType);
-	boolean updatePropertyRepairStatusType( Property property, StatusType statusType);
-	boolean updatePropertyRepairCost( Property property, BigDecimal cost);
-	boolean updatePropertyRepairVatNumber( Property property, String vatNumber);
-	boolean updatePropertyRepairDesc( Property property, String repairDesc);
+	boolean updatePropertyRepairDateTime( long propertyRepairId, LocalDate dateTime);
+	boolean updatePropertyRepairSummary( long propertyRepairId, String summary);
+	boolean updatePropertyRepairType( long propertyRepairId, RepairType repairType);
+	boolean updatePropertyRepairStatusType( long propertyRepairId, StatusType statusType);
+	boolean updatePropertyRepairCost( long propertyRepairId, BigDecimal cost);
+	boolean updatePropertyRepairVatNumber( long propertyRepairId, String vatNumber);
+	boolean updatePropertyRepairDesc( long propertyRepairId, String repairDesc);
 	
 	boolean deleteUser( User user);
 	boolean deleteProperty( Property property);
