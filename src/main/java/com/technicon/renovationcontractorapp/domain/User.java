@@ -1,5 +1,10 @@
 package com.technicon.renovationcontractorapp.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 /**
  * 	This is an abstract class that is the design of a general user.
  * 	There will be no objects of this class. The only objects will
@@ -7,9 +12,14 @@ package com.technicon.renovationcontractorapp.domain;
  * 
  * 	@author Grproth, skroutzzz
  */
-public class User {
 
-	private final long userId;
+@Entity
+public class User {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private long userId;
+	
 	private final String name;
 	private final String surname;
 	private String address;
@@ -20,12 +30,15 @@ public class User {
 	private final String vatNumber;
 	private final boolean isAdmin;
 	
-	public User( long userId, String name, String surname, 
+	
+	
+	
+	public User( String name, String surname, 
 			String address, String phoneNumber, String email, 
 			String username, String password, String vatNumber,
 			boolean isAdmin) {
 		
-		this.userId = userId;
+		
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
