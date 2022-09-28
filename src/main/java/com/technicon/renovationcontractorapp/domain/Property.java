@@ -1,81 +1,83 @@
 package com.technicon.renovationcontractorapp.domain;
 
+import java.time.LocalDate;
+
 /**
  * 	This is the class that represents the property itself.
  * 	Properties are owned by the owners users of the system.
  * 
  * 	@author Grproth, skroutzzz
  */
-public class Property extends Record {
+public class Property {
 
-	private long pIdNumber;
+	private long propertyId;
 	private String address;
-	private int constructionYears;
+	private LocalDate constructionYear;
 	private PropertyType propertyType;
-	private String ownersVatNumber;
+	private String vatNumber;
 	
-	public Property( final long pIdNumber, final String address, 
-			final int constructionYears, final PropertyType propertyType,
-			final String ownersVatNumber) {
+	public Property( long pIdNumber, String address, 
+			LocalDate constructionYear, PropertyType propertyType,
+			String ownersVatNumber) {
 		
-		this.pIdNumber = pIdNumber;
+		this.propertyId = pIdNumber;
 		this.address = address;
-		this.constructionYears = constructionYears;
+		this.constructionYear = constructionYear;
 		this.propertyType = propertyType;
-		this.ownersVatNumber = ownersVatNumber;
+		this.vatNumber = ownersVatNumber;
 	}
 
-	public long getpIdNumber() {
-		return pIdNumber;
+	public long getPropertyId() {
+		return propertyId;
 	}
 
-	public void setpIdNumber(long pIdNumber) {
-		this.pIdNumber = pIdNumber;
+	public void setPropertyId( long propertyId) {
+		this.propertyId = propertyId;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress( String address) {
 		this.address = address;
 	}
 
-	public int getConstructionYears() {
-		return constructionYears;
+	public LocalDate getConstructionYear() {
+		return constructionYear;
 	}
 
-	public void setConstructionYears(int constructionYears) {
-		this.constructionYears = constructionYears;
+	public void setConstructionYear( LocalDate constructionYear) {
+		this.constructionYear = constructionYear;
 	}
 
 	public PropertyType getPropertyType() {
 		return propertyType;
 	}
 
-	public void setPropertyType(PropertyType propertyType) {
+	public void setPropertyType( PropertyType propertyType) {
 		this.propertyType = propertyType;
 	}
 
-	public String getOwnersVatNumber() {
-		return ownersVatNumber;
+	public String getVatNumber() {
+		return vatNumber;
 	}
 
-	public void setOwnersVatNumber(String ownersVatNumber) {
-		this.ownersVatNumber = ownersVatNumber;
+	public void setVatNumber( String vatNumber) {
+		this.vatNumber = vatNumber;
 	}
-	
+
 	public String header() {
 		
-		return "pIdNumber, address, constructionYears, "
-				+ "propertyType, ownersVatNumber";
+		return "propertyId, address, constructionYear, "
+				+ "propertyType, vatNumber";
 	}
 	
 	@Override
 	public String toString() {
 		
-		return pIdNumber + ", " + address + ", " 
-			+ constructionYears + ", " + propertyType + ", " 
-			+ ownersVatNumber;
+		return propertyId + ", " + address + ", " 
+			+ constructionYear + ", " + propertyType + ", " 
+			+ vatNumber;
 	}
 }

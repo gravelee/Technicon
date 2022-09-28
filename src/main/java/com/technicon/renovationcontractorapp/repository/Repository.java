@@ -1,5 +1,7 @@
 package com.technicon.renovationcontractorapp.repository;
 
+import java.util.List;
+
 import com.technicon.renovationcontractorapp.domain.Record;
 
 /**
@@ -13,6 +15,6 @@ import com.technicon.renovationcontractorapp.domain.Record;
  */
 public interface Repository {
 
-	boolean addRecord( Record record); 
+	boolean addRecord( Record record);
 	boolean deleteRecord( Record record);
 }

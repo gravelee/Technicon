@@ -24,7 +24,15 @@ public class UserRepositoryImpl extends RepositoryImpl implements UserRepository
 	@Override
 	public boolean addRecord( Record record) {
 		
-		return super.addRecord(record);
+		User user = (User) record;
+		
+		if( isUserUnique( user.getUserId(),
+				user.getPhoneNumber(),user.getEmail())) {
+			
+			return super.addRecord(record);
+		}
+		
+		return false;
 	}
 	
 	public User readUser( String string, boolean isVatNumber) {
@@ -115,5 +123,23 @@ public class UserRepositoryImpl extends RepositoryImpl implements UserRepository
 	public boolean deleteRecord( Record record) {
 		
 		return super.deleteRecord(record);
+	}
+	
+	private boolean isUserUnique( String userId, 
+			String phoneNumber, String email) {
+		
+		for( Record record : list) {
+			
+			User user = (User) record;
+			
+			if( user.getUserId().equals(userId) ||
+					user.getPhoneNumber().equals(phoneNumber) ||
+					user.getEmail().equals(email)) {
+				
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

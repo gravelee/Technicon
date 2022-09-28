@@ -1,7 +1,7 @@
 package com.technicon.renovationcontractorapp.domain;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * 	This class represents the repairs that a property can have
@@ -9,46 +9,56 @@ import java.time.LocalDateTime;
  * 
  * 	@author Grproth, skroutzzz
  */
-public class PropertyRepair extends Record {
+public class PropertyRepair {
 
-	private LocalDateTime dateTime;
+	private long propertyRepairId;
+	private LocalDate dateTime;
 	private String summary;
 	private RepairType repairType;
 	private StatusType statusType;
 	private BigDecimal cost;
-	private String ownerVatNumber;
-	private long pIdNumber;
+	private String vatNumber;
+	private long propertyId;
 	private String repairDesc;
 	
-	public PropertyRepair( final LocalDateTime datetime, 
-		final String summary, final RepairType repairType, 
-		final StatusType statusType, final BigDecimal cost, 
-		final String ownerVatNumber, final long pIdNumber, 
-		final String repairDesc) {
+	public PropertyRepair( long propertyRepairId, 
+		LocalDate dateTime, String summary, 
+		RepairType repairType, StatusType statusType, 
+		BigDecimal cost, String vatNumber, 
+		long propertyId, String repairDesc) {
 		
-		this.dateTime = datetime;
+		this.propertyRepairId = propertyRepairId;
+		this.dateTime = dateTime;
 		this.summary = summary;
 		this.repairType = repairType;
 		this.statusType = statusType;
 		this.cost = cost;
-		this.ownerVatNumber = ownerVatNumber;
-		this.pIdNumber = pIdNumber;
+		this.vatNumber = vatNumber;
+		this.propertyId = propertyId;
 		this.repairDesc = repairDesc;
 	}
 
-	public LocalDateTime getDatetime() {
+	public long getPropertyRepairId() {
+		return propertyRepairId;
+	}
+
+	public void setPropertyRepairId( long propertyRepairId) {
+		this.propertyRepairId = propertyRepairId;
+	}
+
+	public LocalDate getDateTime() {
 		return dateTime;
 	}
 
-	public void setDatetime(LocalDateTime datetime) {
-		this.dateTime = datetime;
+	public void setDateTime( LocalDate dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public String getSummary() {
 		return summary;
 	}
 
-	public void setSummary(String summary) {
+	public void setSummary( String summary) {
 		this.summary = summary;
 	}
 
@@ -56,7 +66,7 @@ public class PropertyRepair extends Record {
 		return repairType;
 	}
 
-	public void setRepairType(RepairType repairType) {
+	public void setRepairType( RepairType repairType) {
 		this.repairType = repairType;
 	}
 
@@ -64,7 +74,7 @@ public class PropertyRepair extends Record {
 		return statusType;
 	}
 
-	public void setStatusType(StatusType statusType) {
+	public void setStatusType( StatusType statusType) {
 		this.statusType = statusType;
 	}
 
@@ -72,45 +82,46 @@ public class PropertyRepair extends Record {
 		return cost;
 	}
 
-	public void setCost(BigDecimal cost) {
+	public void setCost( BigDecimal cost) {
 		this.cost = cost;
 	}
 
-	public String getOwnerVatNumber() {
-		return ownerVatNumber;
+	public String getVatNumber() {
+		return vatNumber;
 	}
 
-	public void setOwnerVatNumber(String ownerVatNumber) {
-		this.ownerVatNumber = ownerVatNumber;
+	public void setVatNumber( String vatNumber) {
+		this.vatNumber = vatNumber;
 	}
 
-	public long getpIdNumber() {
-		return pIdNumber;
+	public long getPropertyId() {
+		return propertyId;
 	}
 
-	public void setpIdNumber(long pIdNumber) {
-		this.pIdNumber = pIdNumber;
+	public void setPropertyId(long propertyId) {
+		this.propertyId = propertyId;
 	}
 
 	public String getRepairDesc() {
 		return repairDesc;
 	}
 
-	public void setRepairDesc(String repairDesc) {
+	public void setRepairDesc( String repairDesc) {
 		this.repairDesc = repairDesc;
 	}
-	
+
 	public String header() {
 		
-		return "datetime, summary, repairType, statusType, cost, "
-				+ "ownerVatNumber, pIdNumber, repairDesc";
+		return "propertyRepairId, dateTime, summary, repairType, statusType, cost, "
+				+ "vatNumber, propertyId, repairDesc";
 	}
-	
+
 	@Override
 	public String toString() {
-		
-		return dateTime + ", " + summary + ", " + repairType + ", " 
-				+ statusType + ", " + cost + ", " + ownerVatNumber + ", " 
-				+ pIdNumber + ", " + repairDesc;
+		return "propertyRepairId=" + propertyRepairId + ", dateTime=" + dateTime + ", summary="
+				+ summary + ", repairType=" + repairType + ", statusType=" + statusType + ", cost=" + cost
+				+ ", vatNumber=" + vatNumber + ", propertyId=" + propertyId + ", repairDesc=" + repairDesc;
 	}
+	
+	
 }

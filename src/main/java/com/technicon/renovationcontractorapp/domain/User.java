@@ -7,27 +7,25 @@ package com.technicon.renovationcontractorapp.domain;
  * 
  * 	@author Grproth, skroutzzz
  */
-public abstract class User extends Record {
+public class User {
 
-	private final static int userIdLength = 10;
-	private static long numberOfUsers = 0;
+	private final long userId;
+	private final String name;
+	private final String surname;
+	private String address;
+	private final String phoneNumber;
+	private String email;
+	private final String username;
+	private String password;
+	private final String vatNumber;
+	private final boolean isAdmin;
 	
-	protected final String userId;
-	protected final String name;
-	protected final String surname;
-	protected String address;
-	protected final String phoneNumber;
-	protected String email;
-	protected final String username;
-	protected String password;
-	
-	protected User( String name, String surname, String address, 
-			String phoneNumber, String email, String username,
-			String password) {
+	public User( long userId, String name, String surname, 
+			String address, String phoneNumber, String email, 
+			String username, String password, String vatNumber,
+			boolean isAdmin) {
 		
-		
-		userId = createNewUserId();
-		
+		this.userId = userId;
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
@@ -35,55 +33,66 @@ public abstract class User extends Record {
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.vatNumber = vatNumber;
+		this.isAdmin = isAdmin;
 	}
 	
-	// getters
-	
-	public long getNumberOfUsers() {
-		
-		return numberOfUsers;
-	}
-	
-	public String getUserId() {
-		
-		return userId;
-	}
-	
-	/*
 	public String getAddress() {
-		
 		return address;
-	}*/
-	
-	public String getEmail() {
-		
-		return email;
 	}
-	/*
-	public String getPassword() {
-		
-		return password;
-	}*/
-	
-	public void setAddress( String address) {
-		
+
+	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	public void setEmail( String email) {
-		
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public void setPassword( String password) {
-		
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getVatNumber() {
+		return vatNumber;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
 	public String header() {
 	
 		return "userId, name, surname, address, phoneNumber, "
-				+ "email, username, password";
+				+ "email, username, password, vatNumber, isAdmin";
 	}
 	
 	@Override
@@ -91,22 +100,6 @@ public abstract class User extends Record {
 		
 		return userId + ", " + name + ", " + surname + ", " 
 			+ address + ", " + phoneNumber + ", " + email + ", "
-			+ username + ", " + password;
+			+ username + ", " + password + ", " + vatNumber + ", " + isAdmin;
 	}
-	
-	private String createNewUserId() {
-		
-		StringBuilder userId = 
-			new StringBuilder( ( (Long) User.numberOfUsers).toString());
-		
-		if( userId.length() < userIdLength)
-			for( int i = 0; i<userIdLength - userId.length(); i++)
-				userId.insert(0,"0");
-		
-		numberOfUsers++;
-		
-		return userId.toString();
-	}
-	
-	
 }

@@ -3,6 +3,7 @@ package com.technicon.renovationcontractorapp.repository.impl;
 import java.util.List;
 
 import com.technicon.renovationcontractorapp.domain.Record;
+import com.technicon.renovationcontractorapp.domain.User;
 import com.technicon.renovationcontractorapp.repository.Repository;
 
 /**
@@ -26,6 +27,7 @@ public abstract class RepositoryImpl implements Repository {
 		
 		return list.add(record);
 	}
+	
 	public boolean deleteRecord( Record record) {
 		
 		return list.remove(record);
