@@ -2,7 +2,6 @@ package com.technicon.renovationcontractorapp.repository;
 
 import java.util.List;
 
-import com.technicon.renovationcontractorapp.domain.Record;
 
 /**
  * 	This is the interface that defines the CRUD
@@ -11,10 +10,13 @@ import com.technicon.renovationcontractorapp.domain.Record;
  * 	interfaces that extend this one cause they are
  * 	more specific.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
-public interface Repository {
+public interface Repository<T> {
 
-	boolean addRecord( Record record);
-	boolean deleteRecord( Record record);
+	boolean add(T t);
+	List<T> read();
+	T read(long tId);
+	boolean delete(long tId);
+	
 }

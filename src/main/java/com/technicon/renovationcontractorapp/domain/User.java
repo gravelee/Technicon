@@ -5,9 +5,9 @@ package com.technicon.renovationcontractorapp.domain;
  * 	There will be no objects of this class. The only objects will
  * 	be the children of this classes extender classes Admin & Owner.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
-public class User {
+public class User implements Entity{
 
 	private final long userId;
 	private final String name;
@@ -61,7 +61,7 @@ public class User {
 		this.password = password;
 	}
 
-	public long getUserId() {
+	public long getId() {
 		return userId;
 	}
 
@@ -101,5 +101,11 @@ public class User {
 		return userId + ", " + name + ", " + surname + ", " 
 			+ address + ", " + phoneNumber + ", " + email + ", "
 			+ username + ", " + password + ", " + vatNumber + ", " + isAdmin;
+	}
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

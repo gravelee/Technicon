@@ -3,7 +3,7 @@ package com.technicon.renovationcontractorapp.domain;
 /**
  *  An enum helper type that represents the different apartment types.
  * 
- *  @author Grproth, skroutzzz
+ *  @author Grproth, skroutzzz, Chris394
  */
 public enum RepairType {
 

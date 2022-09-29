@@ -4,7 +4,7 @@ package com.technicon.renovationcontractorapp.domain;
  *  An enum helper type that represents the different repair
  *  statuses types.
  * 
- *  @author Grproth, skroutzzz
+ *  @author Grproth, skroutzzz, Chris394
  */
 public enum StatusType {
 

@@ -6,9 +6,9 @@ import java.time.LocalDate;
  * 	This is the class that represents the property itself.
  * 	Properties are owned by the owners users of the system.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
-public class Property {
+public class Property implements Entity{
 
 	private long propertyId;
 	private String address;
@@ -27,7 +27,7 @@ public class Property {
 		this.vatNumber = ownersVatNumber;
 	}
 
-	public long getPropertyId() {
+	public long getId() {
 		return propertyId;
 	}
 
@@ -79,5 +79,12 @@ public class Property {
 		return propertyId + ", " + address + ", " 
 			+ constructionYear + ", " + propertyType + ", " 
 			+ vatNumber;
+	}
+
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

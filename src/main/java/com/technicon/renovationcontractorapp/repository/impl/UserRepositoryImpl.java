@@ -2,8 +2,6 @@ package com.technicon.renovationcontractorapp.repository.impl;
 
 import java.util.List;
 
-import com.technicon.renovationcontractorapp.domain.Owner;
-import com.technicon.renovationcontractorapp.domain.Record;
 import com.technicon.renovationcontractorapp.domain.User;
 import com.technicon.renovationcontractorapp.repository.UserRepository;
 
@@ -12,134 +10,46 @@ import com.technicon.renovationcontractorapp.repository.UserRepository;
  * 	implementation and adds the more specific update methods
  * 	that the user repository needs.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
-public class UserRepositoryImpl extends RepositoryImpl implements UserRepository {
-	
-	UserRepositoryImpl( List<Record> list) {
-		
-		super(list);
-	}
+public class UserRepositoryImpl extends RepositoryImpl<User> implements UserRepository {
 
-	@Override
-	public boolean addRecord( Record record) {
-		
-		User user = (User) record;
-		
-		if( isUserUnique( user.getUserId(),
-				user.getPhoneNumber(),user.getEmail())) {
-			
-			return super.addRecord(record);
-		}
-		
-		return false;
-	}
+	public UserRepositoryImpl(List<User> userList) {
+        super(userList);
+    }
 	
-	public User readUser( String string, boolean isVatNumber) {
-		
-		if(isVatNumber) {
-			
-			for( Record record : list) {
-				
-				Owner owner = (Owner) record;
-				
-				if( owner.getVatNumber().equals(string)) {
-					
-					return owner;
-				}
-			}
-			
-			return null;
-		}
-		
-		for( Record record : list) {
-			
-			User user = (User) record;
-			
-			if( user.getEmail().equals(string)) {
-				
+	@Override
+	public User readByVatNumber(String vatNumber) {
+		for(User user:read()) {
+			if(user.getVatNumber().equals(vatNumber)) {
 				return user;
 			}
 		}
-		
 		return null;
 	}
-	
-	public boolean updateAddress( 
-			User userToBeUpdated, String address) {
-		
-		for( Record record : list) {
-			
-			User user = (User) record;
-			
-			if( userToBeUpdated.getUserId()
-					.equals( user.getUserId())) {
-				
-				user.setAddress(address);
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	public boolean updateEmail( 
-			User userToBeUpdated, String email) {
-		
-		for( Record record : list) {
-			
-			User user = (User) record;
-			
-			if( userToBeUpdated.getUserId()
-					.equals( user.getUserId())) {
-				
-				user.setEmail(email);
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	public boolean updatePassword( 
-			User userToBeUpdated, String password) {
-		
-		for( Record record : list) {
-			
-			User user = (User) record;
-			
-			if( userToBeUpdated.getUserId()
-					.equals( user.getUserId())) {
-				
-				user.setPassword(password);
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
+
 	@Override
-	public boolean deleteRecord( Record record) {
-		
-		return super.deleteRecord(record);
-	}
-	
-	private boolean isUserUnique( String userId, 
-			String phoneNumber, String email) {
-		
-		for( Record record : list) {
-			
-			User user = (User) record;
-			
-			if( user.getUserId().equals(userId) ||
-					user.getPhoneNumber().equals(phoneNumber) ||
-					user.getEmail().equals(email)) {
-				
-				return false;
-			}
-		}
-		
+	public boolean updateAddress(String vatNumber, String newAddress) {
+		User user = readByVatNumber(vatNumber);
+		if( user == null) return false;
+		user.setAddress(newAddress); 
 		return true;
 	}
+
+	@Override
+	public boolean updateEmail(String vatNumber, String newEmail) {
+		User user = readByVatNumber(vatNumber);
+		if( user == null) return false;
+		user.setEmail(newEmail); 
+		return true;
+	}
+
+	@Override
+	public boolean updatePassword(String vatNumber, String newPassword) {
+		User user = readByVatNumber(vatNumber);
+		if( user == null) return false;
+		user.setPassword(newPassword); 
+		return true;
+	}
+	
 }

@@ -7,9 +7,9 @@ import java.time.LocalDate;
  * 	This class represents the repairs that a property can have
  * 	(a property can have many repairs).
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
-public class PropertyRepair {
+public class PropertyRepair implements Entity{
 
 	private long propertyRepairId;
 	private LocalDate dateTime;
@@ -38,7 +38,7 @@ public class PropertyRepair {
 		this.repairDesc = repairDesc;
 	}
 
-	public long getPropertyRepairId() {
+	public long getId() {
 		return propertyRepairId;
 	}
 
@@ -121,6 +121,12 @@ public class PropertyRepair {
 		return "propertyRepairId=" + propertyRepairId + ", dateTime=" + dateTime + ", summary="
 				+ summary + ", repairType=" + repairType + ", statusType=" + statusType + ", cost=" + cost
 				+ ", vatNumber=" + vatNumber + ", propertyId=" + propertyId + ", repairDesc=" + repairDesc;
+	}
+
+	@Override
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

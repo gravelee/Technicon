@@ -2,8 +2,7 @@ package com.technicon.renovationcontractorapp.repository.impl;
 
 import java.util.List;
 
-import com.technicon.renovationcontractorapp.domain.Record;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.domain.Entity;
 import com.technicon.renovationcontractorapp.repository.Repository;
 
 /**
@@ -11,25 +10,41 @@ import com.technicon.renovationcontractorapp.repository.Repository;
  * 	It is abstract cause we will never instantiate this class.
  * 	We will instantiate its children only.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  * 	@param 	<R>	Can be User, Property or PropertyRepair.
  */
-public abstract class RepositoryImpl implements Repository {
-
-	protected List<Record> list;
+public abstract class RepositoryImpl<T extends Entity> implements Repository<T> {
 	
-	RepositoryImpl( List<Record> list){
-		
-		this.list = list;
+	private final List<T> list;
+	
+	public RepositoryImpl(List<T> list) {
+        this.list = list;
+   }
+	
+	public boolean add (T t){
+	    if (t.isValid())
+		       list.add(t);
+	    return true;
 	}
 	
-	public boolean addRecord( Record record) {
-		
-		return list.add(record);
-	}
+	public List<T> read(){
+        return list;
+    }
 	
-	public boolean deleteRecord( Record record) {
+	public T read(long id){
+		 
+        for (T t:list){
+            if (t.getId() == id){
+                   return t;
+            }
+        }
+        return null; 
+    }
 		
-		return list.remove(record);
-	}
+	 public boolean delete(long tId){
+	        T t = read(tId);
+	        if( t == null) return false;
+	        list.remove(t);
+	        return true;
+	    }
 }
