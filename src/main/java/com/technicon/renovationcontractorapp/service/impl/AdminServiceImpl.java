@@ -35,6 +35,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		this.userRepository = userRepository;
 	}
 
+	/**
+	 * 	Adds the user if he is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean addUser(User user) {
 		
@@ -44,6 +48,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.add(user);
 	}
 
+	/**
+	 * 	Adds the property if it is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean addProperty(Property property) {
 
@@ -53,6 +61,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return propertyRepository.add(property);
 	}
 
+	/**
+	 * 	Adds the property repair if it is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean addPropertyRepair(PropertyRepair propertyRepair) {
 
@@ -62,6 +74,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return propertyRepairRepository.add(propertyRepair);
 	}
 
+	/**
+	 * 	Updates the user with the new address if 
+	 * 	the user and the address are valid.
+	 */
 	@Override
 	public boolean updateUserAddress(User user, String address) {
 		
@@ -71,6 +87,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.updateAddress(address);
 	}
 
+	/**
+	 * 	Updates the user with the new email if 
+	 * 	the user and the email are valid.
+	 */
 	@Override
 	public boolean updateUserEmail(User user, String email) {
 		
@@ -80,6 +100,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.updateEmail(email);
 	}
 
+	/**
+	 * 	Updates the user with the new password if 
+	 * 	the user and the password are valid.
+	 */
 	@Override
 	public boolean updateUserPassword(User user, String password) {
 		
@@ -89,6 +113,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.updatePassword(password);
 	}
 
+	/**
+	 * 	Updates the property with the new address if 
+	 * 	the property and the address are valid.
+	 */
 	@Override
 	public boolean updatePropertyAddress(
 			Property property, String address) {
@@ -99,6 +127,11 @@ public class AdminServiceImpl extends UserServiceImpl
 		return propertyRepository.updateAddress(address);
 	}
 
+	/**
+	 * 	Updates the property with the new construction 
+	 * 	year if the property and the construction year 
+	 * 	are valid.
+	 */
 	@Override
 	public boolean updatePropertyConstructionYear(
 			Property property, LocalDate constructionYear) {
@@ -111,6 +144,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				constructionYear);
 	}
 
+	/**
+	 * 	Updates the property with the new property type if 
+	 * 	the property and the property type are valid.
+	 */
 	@Override
 	public boolean updatePropertyType(Property property, 
 			PropertyType propertyType) {
@@ -123,6 +160,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				propertyType);
 	}
 
+	/**
+	 * 	Updates the property with the new vat number if 
+	 * 	the property and the vat number are valid.
+	 */
 	@Override
 	public boolean updatePropertyVatNumber(
 			Property property, String vatNumber) {
@@ -135,6 +176,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				vatNumber);
 	}
 
+	/**
+	 * 	Updates the property repair with the new dateTime 
+	 * 	if the property repair and the dateTime are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairDateTime(
 			Property propertyRepair, LocalDate dateTime) {
@@ -147,6 +192,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				dateTime);
 	}
 
+	/**
+	 * 	Updates the property repair with the new summary 
+	 * 	if the property repair and the summary are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairSummary(
 			Property propertyRepair, String summary) {
@@ -159,6 +208,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				summary);
 	}
 
+	/**
+	 * 	Updates the property repair with the new repairType 
+	 * 	if the property repair and the repairType are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairType(
 			Property propertyRepair, RepairType repairType) {
@@ -171,6 +224,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				repairType);
 	}
 
+	/**
+	 * 	Updates the property repair with the new statusType 
+	 * 	if the property repair and the statusType are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairStatusType(
 			Property propertyRepair, StatusType statusType) {
@@ -183,6 +240,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				statusType);
 	}
 
+	/**
+	 * 	Updates the property repair with the new cost 
+	 * 	if the property repair and the cost are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairCost(
 			Property propertyRepair, BigDecimal cost) {
@@ -195,6 +256,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				cost);
 	}
 
+	/**
+	 * 	Updates the property repair with the new vatNumber 
+	 * 	if the property repair and the vatNumber are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairVatNumber(
 			Property propertyRepair, String vatNumber) {
@@ -207,6 +272,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				vatNumber);
 	}
 
+	/**
+	 * 	Updates the property repair with the new repairDesc 
+	 * 	if the property repair and the repairDesc are valid.
+	 */
 	@Override
 	public boolean updatePropertyRepairDesc(
 			Property propertyRepair, String repairDesc) {
@@ -219,6 +288,10 @@ public class AdminServiceImpl extends UserServiceImpl
 				repairDesc);
 	}
 
+	/**
+	 * 	Deletes the user if he is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean deleteUser(User user) {
 
@@ -228,6 +301,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.delete(user);
 	}
 
+	/**
+	 * 	Deletes the property if it is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean deleteProperty(Property property) {
 
@@ -237,6 +314,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return propertyRepository.delete(property);
 	}
 
+	/**
+	 * 	Deletes the property repair if it is valid,
+	 * 	otherwise returns false.
+	 */
 	@Override
 	public boolean deletePropertyRepair(PropertyRepair propertyRepair) {
 
@@ -246,6 +327,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return propertyRepairRepository.delete(propertyRepair);
 	}
 
+	/**
+	 * 	Returns the user with the specific vat number, 
+	 * 	otherwise returns null.
+	 */
 	@Override
 	public User readUserWithVatNumber(String vatNumber) {
 
@@ -255,6 +340,10 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.readByVatNumber(vatNumber);
 	}
 
+	/**
+	 * 	Returns the user with the specific email, 
+	 * 	otherwise returns null.
+	 */
 	@Override
 	public User readUserWithEmail(String email) {
 
@@ -264,75 +353,117 @@ public class AdminServiceImpl extends UserServiceImpl
 		return userRepository.readByEmail(email);
 	}
 	
+	/**
+	 * 	Returns if the user is valid.
+	 */
 	private boolean isUserValid(User user) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the property is valid.
+	 */
 	private boolean isPropertyValid(Property property) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the property repair is valid.
+	 */
 	private boolean isPropertyRepairValid(
 			PropertyRepair propertyRepair) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the address is valid.
+	 */
 	private boolean isAddressValid(String address) {
 		// business logic
 		return false;
 	}
 	
+	/**
+	 * 	Returns if the email is valid.
+	 */
 	private boolean isEmailValid(String email) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the password is valid.
+	 */
 	private boolean isPasswordValid(String password) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the constructionYear is valid.
+	 */
 	private boolean isConstructionYearValid(
 			LocalDate constructionYear) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the propertyType is valid.
+	 */
 	private boolean isPropertyTypeValid(
 			PropertyType propertyType) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the propertyRepair is valid.
+	 */
 	private boolean isPropertyRepairValid(
 			Property propertyRepair) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the summary is valid.
+	 */
 	private boolean isSummaryValid(String summary) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the repairType is valid.
+	 */
 	private boolean isRepairTypeValid(RepairType repairType) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the statusType is valid.
+	 */
 	private boolean isStatusTypeValid(StatusType statusType) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the cost is valid.
+	 */
 	private boolean isCostValid(BigDecimal cost) {
 		// business logic
 		return false;
 	}
 
+	/**
+	 * 	Returns if the repairDesc is valid.
+	 */
 	private boolean isRepairDescValid(String repairDesc) {
 		// business logic
 		return false;
