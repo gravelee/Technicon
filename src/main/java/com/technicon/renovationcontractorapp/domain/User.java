@@ -16,6 +16,8 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
 	
+	public final static short VAT_NUMBER_LENGTH = 10;
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long userId;
@@ -29,9 +31,6 @@ public class User {
 	private String password;
 	private final String vatNumber;
 	private final boolean isAdmin;
-	
-	
-	
 	
 	public User( String name, String surname, 
 			String address, String phoneNumber, String email, 

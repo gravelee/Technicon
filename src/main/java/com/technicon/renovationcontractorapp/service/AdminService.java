@@ -13,37 +13,38 @@ import com.technicon.renovationcontractorapp.domain.User;
 
 /**
  * 	This interface describes all the functionality
- * 	an administrator of the system will have.
+ * 	an administrator of the system will have. He can
+ * 	also have the functionality of a regular user.
  * 
  * 	@author Grproth, skroutzzz
  */
 public interface AdminService extends UserService {
 
-	boolean addUser( User user);
-	boolean addProperty( Property property);
-	boolean addPropertyRepair( PropertyRepair propertyRepair);
+	boolean addUser( final User user);
+	boolean addProperty( final Property property);
+	boolean addPropertyRepair( final PropertyRepair propertyRepair);
 	
-	boolean updateUserAddress( long userId, String address);
-	boolean updateUserEmail( long userId, String email);
-	boolean updateUserPassword( long userId, String password);
+	boolean updateUserAddress( final User user, final String address);
+	boolean updateUserEmail( final User user, final String email);
+	boolean updateUserPassword( final User user, final String password);
 		
-	boolean updatePropertyAddress( long propertyId, String address);
-	boolean updatePropertyConstructionYear( long propertyId, LocalDate constructionYear);
-	boolean updatePropertyType( long propertyId, PropertyType propertyType);
-	boolean updatePropertyVatNumber( long propertyId, String vatNumber);
+	boolean updatePropertyAddress( final Property property, final String address);
+	boolean updatePropertyConstructionYear( final Property property, final LocalDate constructionYear);
+	boolean updatePropertyType( final Property property, final PropertyType propertyType);
+	boolean updatePropertyVatNumber( final Property property, final String vatNumber);
 	
-	boolean updatePropertyRepairDateTime( long propertyRepairId, LocalDate dateTime);
-	boolean updatePropertyRepairSummary( long propertyRepairId, String summary);
-	boolean updatePropertyRepairType( long propertyRepairId, RepairType repairType);
-	boolean updatePropertyRepairStatusType( long propertyRepairId, StatusType statusType);
-	boolean updatePropertyRepairCost( long propertyRepairId, BigDecimal cost);
-	boolean updatePropertyRepairVatNumber( long propertyRepairId, String vatNumber);
-	boolean updatePropertyRepairDesc( long propertyRepairId, String repairDesc);
+	boolean updatePropertyRepairDateTime( final Property propertyRepair, final LocalDate dateTime);
+	boolean updatePropertyRepairSummary( final Property propertyRepair, final String summary);
+	boolean updatePropertyRepairType( final Property propertyRepair, final RepairType repairType);
+	boolean updatePropertyRepairStatusType( final Property propertyRepair, final StatusType statusType);
+	boolean updatePropertyRepairCost( final Property propertyRepair, final BigDecimal cost);
+	boolean updatePropertyRepairVatNumber( final Property propertyRepair, final String vatNumber);
+	boolean updatePropertyRepairDesc( final Property propertyRepair, final String repairDesc);
 	
-	boolean deleteUser( User user);
-	boolean deleteProperty( Property property);
-	boolean deletePropertyRepair( PropertyRepair propertyRepair);
+	boolean deleteUser( final User user);
+	boolean deleteProperty( final Property property);
+	boolean deletePropertyRepair( final PropertyRepair propertyRepair);
 	
-	User readUserWithVatNumber( String vatNumber);
-	User readUserWithEmail( String email);
+	User readUserWithVatNumber( final String vatNumber);
+	User readUserWithEmail( final String email);
 }
