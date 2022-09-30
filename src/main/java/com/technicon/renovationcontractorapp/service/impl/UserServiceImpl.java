@@ -117,7 +117,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean isVatNumberValid( String vatNumber) {
 		
-		return (vatNumber.length() == User.vatNumberLength);
+		return (vatNumber.length() == User.VAT_NUMBER_LENGTH);
 	}
 
 	/**

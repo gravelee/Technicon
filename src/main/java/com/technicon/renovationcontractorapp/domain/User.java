@@ -16,7 +16,7 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
 	
-	public final static short vatNumberLength = 10;
+	public final static short VAT_NUMBER_LENGTH = 10;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
