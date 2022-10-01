@@ -69,7 +69,6 @@ public class PropertyRepositoryImpl extends RepositoryImpl<Property> implements 
 		if( property == null) return false;
 		property.setVatNumber(newOwnersVatNumber); 
 		return true;
-	}
-	
+	}	
 	
 }
