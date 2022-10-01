@@ -21,6 +21,8 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class User {
 	
+	public final static short VAT_NUMBER_LENGTH = 10;
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long userId;
@@ -40,6 +42,7 @@ public class User {
 	@Column(length = 50)
 	private String password;
 	
+
 	@Column(unique = true, length = 10)
 	private String vatNumber;
 
@@ -52,6 +55,7 @@ public class User {
 	public User() {
 		
 	}
+
 
 	public User( String name, String surname, 
 			String address, String phoneNumber, String email, 
