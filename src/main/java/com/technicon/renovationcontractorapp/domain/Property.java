@@ -3,8 +3,10 @@ package com.technicon.renovationcontractorapp.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,6 +29,9 @@ public class Property {
 	
 	private String address;
 	private LocalDate constructionYear;
+	
+	@Column(columnDefinition = "enum('DETACHED_HOUSE','MAISONETTE', 'APARTMENT_BUILDING')")
+	@Enumerated(EnumType.STRING)
 	private PropertyType propertyType;
 	private String vatNumber;
 	

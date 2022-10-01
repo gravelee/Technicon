@@ -3,7 +3,10 @@ package com.technicon.renovationcontractorapp.domain;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +27,13 @@ public class PropertyRepair {
 	private long propertyRepairId;
 	private LocalDate dateTime;
 	private String summary;
+	
+	@Column(columnDefinition = "enum('PAINTING','INSULATION', 'FRAMES', 'PLUMBING', 'ELECTRICAL_WORK')")
+	@Enumerated(EnumType.STRING)
 	private RepairType repairType;
+	
+	@Column(columnDefinition = "enum('PENDING','IN_PROGRESS', 'COMPLETE')")
+	@Enumerated(EnumType.STRING)
 	private StatusType statusType;
 	private BigDecimal cost;
 	private String vatNumber;
