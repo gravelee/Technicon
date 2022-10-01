@@ -36,6 +36,7 @@ public class PropertyRepair {
 	@Enumerated(EnumType.STRING)
 	private StatusType statusType;
 	private BigDecimal cost;
+	@Column(length = 10)
 	private String vatNumber;
 	//private long propertyId;
 	private String repairDesc;

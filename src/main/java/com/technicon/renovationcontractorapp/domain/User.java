@@ -25,15 +25,22 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long userId;
 	
+	@Column(length = 25)
 	private String name;
+	@Column(length = 25)
 	private String surname;
+	@Column(length = 25)
 	private String address;
+	@Column(length = 13)
 	private String phoneNumber;
+	@Column(length = 30)
 	private String email;
+	@Column(length = 25)
 	private String username;
+	@Column(length = 50)
 	private String password;
 	
-	@Column(unique = true)
+	@Column(unique = true, length = 10)
 	private String vatNumber;
 
 	private boolean isAdmin;

@@ -27,12 +27,14 @@ public class Property {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long propertyId;
 	
+	@Column(length = 25)
 	private String address;
 	private LocalDate constructionYear;
 	
 	@Column(columnDefinition = "enum('DETACHED_HOUSE','MAISONETTE', 'APARTMENT_BUILDING')")
 	@Enumerated(EnumType.STRING)
 	private PropertyType propertyType;
+	@Column(length = 10)
 	private String vatNumber;
 	
 	@ManyToOne
