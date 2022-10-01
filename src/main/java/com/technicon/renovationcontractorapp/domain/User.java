@@ -1,9 +1,14 @@
 package com.technicon.renovationcontractorapp.domain;
 
+import java.util.List;
+
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 /**
  * 	This is an abstract class that is the design of a general user.
@@ -22,16 +27,36 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long userId;
 	
-	private final String name;
-	private final String surname;
+	@Column(length = 25)
+	private String name;
+	@Column(length = 25)
+	private String surname;
+	@Column(length = 25)
 	private String address;
-	private final String phoneNumber;
+	@Column(length = 13)
+	private String phoneNumber;
+	@Column(length = 30)
 	private String email;
-	private final String username;
+	@Column(length = 25)
+	private String username;
+	@Column(length = 50)
 	private String password;
-	private final String vatNumber;
-	private final boolean isAdmin;
 	
+
+	@Column(unique = true, length = 10)
+	private String vatNumber;
+
+	private boolean isAdmin;
+	
+	@OneToMany(mappedBy="user")
+	private List<Property> properties;
+	
+	
+	public User() {
+		
+	}
+
+
 	public User( String name, String surname, 
 			String address, String phoneNumber, String email, 
 			String username, String password, String vatNumber,
@@ -49,12 +74,42 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 	
+
+	
+	public long getUserId() {
+		return userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
@@ -65,6 +120,14 @@ public class User {
 		this.email = email;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -73,33 +136,30 @@ public class User {
 		this.password = password;
 	}
 
-	public long getUserId() {
-		return userId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
 	public String getVatNumber() {
 		return vatNumber;
+	}
+
+	public void setVatNumber(String vatNumber) {
+		this.vatNumber = vatNumber;
 	}
 
 	public boolean isAdmin() {
 		return isAdmin;
 	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public List<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(List<Property> properties) {
+		this.properties = properties;
+	}
+
 
 	public String header() {
 	
