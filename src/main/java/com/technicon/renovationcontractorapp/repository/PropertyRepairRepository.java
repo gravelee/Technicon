@@ -5,9 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
-import com.technicon.renovationcontractorapp.domain.RepairType;
-import com.technicon.renovationcontractorapp.domain.StatusType;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.RepairType;
+import com.technicon.renovationcontractorapp.model.StatusType;
 
 /**
  * 	A more specific interface that extends the repository.
@@ -16,9 +16,9 @@ import com.technicon.renovationcontractorapp.domain.StatusType;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public interface PropertyRepairRepository extends Repository<PropertyRepair> {
+public interface PropertyRepairRepository extends Repository<PropertyRepair, Long> {
 
-	
+	/*
 	// read based on dateTime, vatNumber
 	List<PropertyRepair> readByDates(LocalDate dateTime1,LocalDate dateTime2);
 	List<PropertyRepair> readByDate(LocalDate dateTime);
@@ -33,5 +33,5 @@ public interface PropertyRepairRepository extends Repository<PropertyRepair> {
 	boolean updateOwnerVatNumber(long propertyRepairId,String ownerVatNumber);
 	boolean updatePidNumber(long propertyRepairId,long pIdNumber);
 	boolean updateRepairDesc(long propertyRepairId,String repairDesc);
-
+    */
 }

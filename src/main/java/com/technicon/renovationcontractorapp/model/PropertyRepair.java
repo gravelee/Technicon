@@ -1,4 +1,4 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public class PropertyRepair implements Entity{
+public class PropertyRepair{
 
 	private long propertyRepairId;
 	private LocalDate dateTime;
@@ -122,12 +122,5 @@ public class PropertyRepair implements Entity{
 				+ summary + ", repairType=" + repairType + ", statusType=" + statusType + ", cost=" + cost
 				+ ", vatNumber=" + vatNumber + ", propertyId=" + propertyId + ", repairDesc=" + repairDesc;
 	}
-
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
 	
 }

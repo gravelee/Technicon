@@ -3,12 +3,12 @@ package com.technicon.renovationcontractorapp.service.impl;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
-import com.technicon.renovationcontractorapp.domain.PropertyType;
-import com.technicon.renovationcontractorapp.domain.RepairType;
-import com.technicon.renovationcontractorapp.domain.StatusType;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.PropertyType;
+import com.technicon.renovationcontractorapp.model.RepairType;
+import com.technicon.renovationcontractorapp.model.StatusType;
+import com.technicon.renovationcontractorapp.model.User;
 import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository;
 import com.technicon.renovationcontractorapp.repository.PropertyRepository;
 import com.technicon.renovationcontractorapp.repository.UserRepository;

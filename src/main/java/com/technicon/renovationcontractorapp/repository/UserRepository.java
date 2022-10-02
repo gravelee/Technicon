@@ -1,6 +1,6 @@
 package com.technicon.renovationcontractorapp.repository;
 
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.model.User;
 
 /**
  * 	A more specific interface that extends the repository.
@@ -9,7 +9,9 @@ import com.technicon.renovationcontractorapp.domain.User;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public interface UserRepository extends Repository<User>{
+public interface UserRepository extends Repository<User, Long>{
+	
+	/*
 	// read based on email, vatNumber
 	User readByVatNumber(String vatNumber);
 	
@@ -17,4 +19,6 @@ public interface UserRepository extends Repository<User>{
 	boolean updateAddress(String vatNumber, String newAddress);
 	boolean updateEmail(String vatNumber, String newEmail);
 	boolean updatePassword(String vatNumber, String newPassword);
+	*/
+	
 }

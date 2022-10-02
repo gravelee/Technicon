@@ -1,8 +1,9 @@
 package com.technicon.renovationcontractorapp.repository;
 
 import java.time.LocalDate;
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyType;
+
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyType;
 
 /**
  * 	A more specific interface that extends the repository.
@@ -11,8 +12,8 @@ import com.technicon.renovationcontractorapp.domain.PropertyType;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public interface PropertyRepository extends Repository<Property>{
-
+public interface PropertyRepository extends Repository<Property, Long>{
+    /*
 	// read based on vatNumber, pIdNumber
 	Property readByVatNumber(String vatNumber);
 	
@@ -22,5 +23,5 @@ public interface PropertyRepository extends Repository<Property>{
 	boolean updateConstructionYears(long pIdNumber, LocalDate constructionYears);
 	boolean updatePropertyType(long pIdNumber, PropertyType propertyType);
 	boolean updateOwnersVatNumber(long pIdNumber, String ownersVatNumber);
-	
+	*/
 }

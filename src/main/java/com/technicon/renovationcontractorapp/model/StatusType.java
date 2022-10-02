@@ -1,4 +1,4 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 /**
  *  An enum helper type that represents the different repair

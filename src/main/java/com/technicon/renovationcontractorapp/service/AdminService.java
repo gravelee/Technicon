@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
-import com.technicon.renovationcontractorapp.domain.PropertyType;
-import com.technicon.renovationcontractorapp.domain.RepairType;
-import com.technicon.renovationcontractorapp.domain.StatusType;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.PropertyType;
+import com.technicon.renovationcontractorapp.model.RepairType;
+import com.technicon.renovationcontractorapp.model.StatusType;
+import com.technicon.renovationcontractorapp.model.User;
 
 /**
  * 	This interface describes all the functionality

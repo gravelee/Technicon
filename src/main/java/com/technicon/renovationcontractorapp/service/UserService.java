@@ -2,8 +2,8 @@ package com.technicon.renovationcontractorapp.service;
 
 import java.time.LocalDate;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
 
 public interface UserService {
 

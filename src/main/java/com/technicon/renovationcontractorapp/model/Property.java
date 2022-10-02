@@ -1,4 +1,4 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public class Property implements Entity{
+public class Property{
 
 	private long propertyId;
 	private String address;
@@ -81,10 +81,4 @@ public class Property implements Entity{
 			+ vatNumber;
 	}
 
-
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

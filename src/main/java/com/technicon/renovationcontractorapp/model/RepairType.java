@@ -1,19 +1,21 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 /**
  *  An enum helper type that represents the different apartment types.
  * 
  *  @author Grproth, skroutzzz, Chris394
  */
-public enum PropertyType {
+public enum RepairType {
 
-	DETACHED_HOUSE("Detached House"),
-	MAISONETTE("Maisonette"),
-	APARTMENT_BUILDING("Apartment building");
+	PAINTING("Painting"),
+	INSULATION("Insulation"),
+	FRAMES("Frames"),
+	PLUMBING("Plumbing"),
+	ELECTRICAL_WORK("Electrical work");
 	
 	private final String description;
 	
-	private PropertyType( String description) {
+	private RepairType( String description) {
 		
 		this.description = description;
 	}

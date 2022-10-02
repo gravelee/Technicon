@@ -1,4 +1,4 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 /**
  * 	This is an abstract class that is the design of a general user.
@@ -7,7 +7,7 @@ package com.technicon.renovationcontractorapp.domain;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public class User implements Entity{
+public class User{
 
 	private final long userId;
 	private final String name;
@@ -103,9 +103,4 @@ public class User implements Entity{
 			+ username + ", " + password + ", " + vatNumber + ", " + isAdmin;
 	}
 
-	@Override
-	public boolean isValid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

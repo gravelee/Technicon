@@ -1,6 +1,7 @@
 package com.technicon.renovationcontractorapp.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -12,11 +13,11 @@ import java.util.List;
  * 
  * 	@author Grproth, skroutzzz, Chris394
  */
-public interface Repository<T> {
+public interface Repository<T, K> {
 
-	boolean add(T t);
-	List<T> read();
-	T read(long tId);
-	boolean delete(long tId);
+	Optional<T> add(T t);
+	List<T> read(int pageNumber, int pageSize);
+	Optional<T> read(K tId);
+	boolean delete(K tId);
 	
 }
