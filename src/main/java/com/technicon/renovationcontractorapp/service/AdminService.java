@@ -2,7 +2,6 @@ package com.technicon.renovationcontractorapp.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.technicon.renovationcontractorapp.domain.Property;
 import com.technicon.renovationcontractorapp.domain.PropertyRepair;
