@@ -1,9 +1,10 @@
 package com.technicon.renovationcontractorapp.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
 
 /**
  * 	This is the UserService interface. Here we define
@@ -14,16 +15,19 @@ import com.technicon.renovationcontractorapp.domain.PropertyRepair;
  *  date or a range of dates. He can also read property
  *  repairs based on vatNumber.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz, Chris394
  */
 public interface UserService {
 
 	Property readPropertyWithId( final long propertyId);
 	Property readPropertyWithVatNumber( final String vatNumber);
-	PropertyRepair readPropertyRepairWithDate( final LocalDate dateTime);
-	PropertyRepair readPropertyRepairWithDates( 
-			final LocalDate dateTimeFirst, final LocalDate dateTimeSecond);
-	PropertyRepair readPropertyRepairWithVatNumber( final String vatNumber);
+	
+	List<PropertyRepair> readPropertyRepairWithDate( 
+		final LocalDate dateTime);
+	List<PropertyRepair> readPropertyRepairWithDates( 
+		final LocalDate dateTimeFirst, final LocalDate dateTimeSecond);
+	List<PropertyRepair> readPropertyRepairWithVatNumber( 
+		final String vatNumber);
 	
 	boolean isPropertyIdValid( final long propertyId);
 	boolean isVatNumberValid( final String vatNumber);

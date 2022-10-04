@@ -5,12 +5,22 @@ package com.technicon.renovationcontractorapp;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
 import com.technicon.renovationcontractorapp.domain.PropertyType;
 import com.technicon.renovationcontractorapp.domain.RepairType;
 import com.technicon.renovationcontractorapp.domain.StatusType;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.model.User;
+import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository;
+import com.technicon.renovationcontractorapp.repository.PropertyRepository;
+import com.technicon.renovationcontractorapp.repository.UserRepository;
+import com.technicon.renovationcontractorapp.repository.impl.DbPropertyRepairRepositoryImpl;
+import com.technicon.renovationcontractorapp.repository.impl.DbPropertyRepositoryImpl;
+import com.technicon.renovationcontractorapp.repository.impl.DbUserRepositoryImpl;
+import com.technicon.renovationcontractorapp.service.AdminService;
+import com.technicon.renovationcontractorapp.service.UserService;
+import com.technicon.renovationcontractorapp.service.impl.AdminServiceImpl;
+import com.technicon.renovationcontractorapp.service.impl.UserServiceImpl;
 import com.technicon.renovationcontractorapp.jpautil.JpaUtil;
 
 import jakarta.persistence.EntityManager;
@@ -20,25 +30,15 @@ import jakarta.persistence.EntityManager;
  *	and handle the test cases for our platform ( there will be no
  *	GUI or even a terminal menu).
  *
- *
- *	
+ *	@author Grproth, skroutzzz, Chris394
  */
 public class RenovationContractorApp{
     
 	public static void main( String[] args ){
         
-		// Create the Users list
-		// Create the Properties list
-		// Create the PropertyRepair list
-		
-    	// Inject the lists to the serviceImpl
-		
-		// create users and test cases
-		
-		
 //------- Database Test Creation of table user and insertion of one record -----------------		
 		
-		EntityManager entityManager = JpaUtil.getEntityManager();
+		//EntityManager entityManager = JpaUtil.getEntityManager();
 		
 //--------------USERS TEST DATA -----------------//
 		
@@ -213,7 +213,7 @@ public class RenovationContractorApp{
 		
 // -------------- INSERT IN DATABASE ------------------//		
 		
-		
+		/*
 		entityManager.getTransaction().begin();
 		entityManager.persist(user);
 		entityManager.persist(user1);
@@ -237,6 +237,45 @@ public class RenovationContractorApp{
 		
 		entityManager.getTransaction().commit();
 		JpaUtil.shutdown();
+		*/
+		
+		
+		/*
+		// Create the PropertyRepairRepository
+		
+		PropertyRepairRepository pRRepo = 
+			new DbPropertyRepairRepositoryImpl(
+				JpaUtil.getEntityManager());
+		
+		// Create the PropertyRepository
+		
+		PropertyRepository pRepo = 
+			new DbPropertyRepositoryImpl(
+				JpaUtil.getEntityManager());
+		
+		// Create the UserRepository
+		
+		UserRepository uRepo = 
+			new DbUserRepositoryImpl(
+				JpaUtil.getEntityManager());
+		*/
+		
+		// create the services by injecting the repositories inside them,
+		// at the same time we inject the entity managers into the repositories.
+		
+		AdminService adminService = new AdminServiceImpl(
+			new DbUserRepositoryImpl( JpaUtil.getEntityManager()),
+			new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+			new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+		
+		UserService userService = new UserServiceImpl(
+			new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+			new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+		
+		
+		// create users and test cases ( call methods from the services)
+		
+		
 		
     }
 }

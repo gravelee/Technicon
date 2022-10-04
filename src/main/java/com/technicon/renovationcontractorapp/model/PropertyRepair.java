@@ -1,7 +1,10 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.technicon.renovationcontractorapp.domain.RepairType;
+import com.technicon.renovationcontractorapp.domain.StatusType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +19,7 @@ import jakarta.persistence.ManyToOne;
  * 	This class represents the repairs that a property can have
  * 	(a property can have many repairs).
  * 
- * 	@author Grproth, skroutzzz
+ *  @author Grproth, skroutzzz, Chris394
  */
 
 @Entity
@@ -45,7 +48,6 @@ public class PropertyRepair {
 	private Property property;
 	
 	
-	
 	public PropertyRepair() {
 		
 	}
@@ -53,7 +55,6 @@ public class PropertyRepair {
 	public PropertyRepair( LocalDate dateTime, String summary, 
 		RepairType repairType, StatusType statusType, 
 		BigDecimal cost, String vatNumber,  String repairDesc) {
-		
 		
 		this.dateTime = dateTime;
 		this.summary = summary;
@@ -145,6 +146,4 @@ public class PropertyRepair {
 				+ summary + ", repairType=" + repairType + ", statusType=" + statusType + ", cost=" + cost
 				+ ", vatNumber=" + vatNumber + ", repairDesc=" + repairDesc;
 	}
-	
-	
 }

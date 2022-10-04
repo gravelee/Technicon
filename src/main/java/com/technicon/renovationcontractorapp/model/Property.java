@@ -1,7 +1,9 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.technicon.renovationcontractorapp.domain.PropertyType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +20,7 @@ import jakarta.persistence.OneToMany;
  * 	This is the class that represents the property itself.
  * 	Properties are owned by the owners users of the system.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
 @Entity
 public class Property {
@@ -44,7 +46,6 @@ public class Property {
 	private List<PropertyRepair> propertyRepairs;
 	
 
-	
 	public Property() {
 		
 	}
@@ -52,7 +53,6 @@ public class Property {
 	public Property( String address, 
 			LocalDate constructionYear, PropertyType propertyType,
 			String vatNumber) {
-		
 		
 		this.address = address;
 		this.constructionYear = constructionYear;
@@ -111,7 +111,6 @@ public class Property {
 	public void setPropertyRepairs(List<PropertyRepair> propertyRepairs) {
 		this.propertyRepairs = propertyRepairs;
 	}
-	
 	
 	public String header() {
 		

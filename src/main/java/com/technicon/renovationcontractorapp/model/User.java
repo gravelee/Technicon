@@ -1,4 +1,4 @@
-package com.technicon.renovationcontractorapp.domain;
+package com.technicon.renovationcontractorapp.model;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
  * 	There will be no objects of this class. The only objects will
  * 	be the children of this classes extender classes Admin & Owner.
  * 
- * 	@author Grproth, skroutzzz
+ *  @author Grproth, skroutzzz, Chris394
  */
 
 @Entity
@@ -42,7 +42,6 @@ public class User {
 	@Column(length = 50)
 	private String password;
 	
-
 	@Column(unique = true, length = 10)
 	private String vatNumber;
 
@@ -56,12 +55,10 @@ public class User {
 		
 	}
 
-
 	public User( String name, String surname, 
 			String address, String phoneNumber, String email, 
 			String username, String password, String vatNumber,
 			boolean isAdmin) {
-		
 		
 		this.name = name;
 		this.surname = surname;
@@ -73,8 +70,6 @@ public class User {
 		this.vatNumber = vatNumber;
 		this.isAdmin = isAdmin;
 	}
-	
-
 	
 	public long getUserId() {
 		return userId;
@@ -159,7 +154,6 @@ public class User {
 	public void setProperties(List<Property> properties) {
 		this.properties = properties;
 	}
-
 
 	public String header() {
 	

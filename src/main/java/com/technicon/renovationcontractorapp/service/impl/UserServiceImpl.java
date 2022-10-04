@@ -1,10 +1,16 @@
 package com.technicon.renovationcontractorapp.service.impl;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.exception.InappropriateDateValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriatePropertyIdValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateVatNumberValueException;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.User;
 import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository;
 import com.technicon.renovationcontractorapp.repository.PropertyRepository;
 import com.technicon.renovationcontractorapp.service.UserService;
@@ -18,7 +24,7 @@ import com.technicon.renovationcontractorapp.service.UserService;
  * 	data validity and then call the appropriate
  * 	repository's method.
  * 
- * 	@author Grproth
+ * 	@author Grproth, skroutzzz, Chris394
  */
 public class UserServiceImpl implements UserService{
 	
@@ -39,10 +45,29 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Property readPropertyWithId( long propertyId) {
 		
-		if( !isPropertyIdValid(propertyId))
+		if( !isPropertyIdValid(propertyId)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriatePropertyIdValueException(
+					"Error, inappropriate property id value! ("
+						+ propertyId + ")"));
+			
 			return null;
+		}
 		
-		return propertyRepository.readByPropertyId(propertyId);
+		Property property = propertyRepository.readByPropertyId(propertyId);
+		
+		if( property == null) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return property;
 	}
 
 	/**
@@ -52,10 +77,29 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Property readPropertyWithVatNumber( String vatNumber) {
 		
-		if( !isVatNumberValid(vatNumber))
+		if( !isVatNumberValid(vatNumber)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateVatNumberValueException(
+					"Error, inappropriate vat number value! ("
+						+ vatNumber + ")"));
+			
 			return null;
+		}
 		
-		return propertyRepository.readByVatNumber(vatNumber);
+		Property property = propertyRepository.readByVatNumber(vatNumber);
+		
+		if( property == null) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return property;
 	}
 
 	/**
@@ -63,13 +107,35 @@ public class UserServiceImpl implements UserService{
 	 * 	or repair, otherwise returns null.
 	 */
 	@Override
-	public PropertyRepair readPropertyRepairWithDate(
+	public List<PropertyRepair> readPropertyRepairWithDate(
 			LocalDate dateTime) {
 		
-		if( !isDateTimeValid(dateTime))
+		if( !isDateTimeValid(dateTime)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateDateValueException(
+					"Error, inappropriate date value! ("
+						+ dateTime + ")"));
+			
 			return null;
+		}
 		
-		return propertyRepairRepository.readByDate(dateTime);
+		List<PropertyRepair> propertyRepair = 
+			propertyRepairRepository.readByDate(dateTime);
+		
+		if( propertyRepair == null) {
+			
+			
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return propertyRepair;
 	}
 
 	/**
@@ -77,15 +143,35 @@ public class UserServiceImpl implements UserService{
 	 * 	of dates, otherwise returns null.
 	 */
 	@Override
-	public PropertyRepair readPropertyRepairWithDates(
+	public List<PropertyRepair> readPropertyRepairWithDates(
 			LocalDate dateTimeFirst, LocalDate dateTimeSecond) {
 		
 		if( !isDateTimeValid(dateTimeFirst) || 
-				!isDateTimeValid(dateTimeSecond))
+				!isDateTimeValid(dateTimeSecond)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateDateValueException(
+					"Error, inappropriate date value(s)! ("
+						+ dateTimeFirst + "," + dateTimeFirst + ")"));
+			
 			return null;
+		}
 		
-		return propertyRepairRepository.readByDates(
-				dateTimeFirst,dateTimeSecond);
+		List<PropertyRepair> propertyRepair = 
+				propertyRepairRepository.readByDates(
+					dateTimeFirst,dateTimeSecond);
+		
+		if( propertyRepair == null) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return propertyRepair;
 	}
 
 	/**
@@ -93,13 +179,34 @@ public class UserServiceImpl implements UserService{
 	 * 	owners vat number, otherwise returns null.
 	 */
 	@Override
-	public PropertyRepair readPropertyRepairWithVatNumber(
+	public List<PropertyRepair> readPropertyRepairWithVatNumber(
 			String vatNumber) {
 		
-		if( !isVatNumberValid(vatNumber))
+		if( !isVatNumberValid(vatNumber)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateVatNumberValueException(
+					"Error, inappropriate vat number value! ("
+						+ vatNumber + ")"));
+			
 			return null;
+		}
 		
-		return propertyRepository.readByPropertyId(vatNumber);
+		List<PropertyRepair> propertyRepair = 
+				propertyRepairRepository.readByVatNumber(
+						vatNumber);
+		
+		if( propertyRepair == null) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return propertyRepair;
 	}
 
 	/**

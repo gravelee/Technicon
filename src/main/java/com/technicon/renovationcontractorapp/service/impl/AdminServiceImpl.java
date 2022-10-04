@@ -2,13 +2,30 @@ package com.technicon.renovationcontractorapp.service.impl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import com.technicon.renovationcontractorapp.domain.Property;
-import com.technicon.renovationcontractorapp.domain.PropertyRepair;
 import com.technicon.renovationcontractorapp.domain.PropertyType;
 import com.technicon.renovationcontractorapp.domain.RepairType;
 import com.technicon.renovationcontractorapp.domain.StatusType;
-import com.technicon.renovationcontractorapp.domain.User;
+import com.technicon.renovationcontractorapp.exception.InappropriateAddressValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateConstructionYearValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateCostValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateDateValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateDescriptionValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateEmailValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriatePasswordValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriatePropertyException;
+import com.technicon.renovationcontractorapp.exception.InappropriatePropertyRepairException;
+import com.technicon.renovationcontractorapp.exception.InappropriatePropertyTypeValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateRepairTypeValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateSummaryValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateUserException;
+import com.technicon.renovationcontractorapp.exception.InappropriateVatNumberValueException;
+import com.technicon.renovationcontractorapp.model.Property;
+import com.technicon.renovationcontractorapp.model.PropertyRepair;
+import com.technicon.renovationcontractorapp.model.User;
 import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository;
 import com.technicon.renovationcontractorapp.repository.PropertyRepository;
 import com.technicon.renovationcontractorapp.repository.UserRepository;
@@ -20,14 +37,14 @@ import com.technicon.renovationcontractorapp.service.AdminService;
  * 	We check validity and then we parse the actual 
  * 	search to the appropriate repository.
  * 
- * 	@author Grproth, skroutzzz
+ * 	@author Grproth, skroutzzz, Chris394
  */
 public class AdminServiceImpl extends UserServiceImpl 
 		implements AdminService {
 
 	private UserRepository userRepository;
 	
-	AdminServiceImpl( UserRepository userRepository, 
+	public AdminServiceImpl( UserRepository userRepository, 
 			PropertyRepository properyRepository,
 			PropertyRepairRepository properyRepairRepository) {
 
@@ -42,10 +59,26 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean addUser(User user) {
 		
-		if( !isUserValid(user))
+		if( !isUserValid(user)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriateUserException(
+					"Error, inappropriate user value(s)!"));
+			
 			return false;
+		}
 		
-		return userRepository.add(user);
+		try( userRepository.add(user);) {
+			
+			return true;
+			
+		}catch( Exception ex) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, ex);
+			
+			return false;
+		}
 	}
 
 	/**
@@ -55,10 +88,26 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean addProperty(Property property) {
 
-		if( !isPropertyValid(property))
+		if( !isPropertyValid(property)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriatePropertyException(
+					"Error, inappropriate property value(s)!"));
+			
 			return false;
+		}
 		
-		return propertyRepository.add(property);
+		try( propertyRepository.add(property);) {
+			
+			return true;
+		
+		}catch(Exception ex) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, ex);
+			
+			return false;
+		}
 	}
 
 	/**
@@ -68,10 +117,26 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean addPropertyRepair(PropertyRepair propertyRepair) {
 
-		if( !isPropertyRepairValid(propertyRepair))
+		if( !isPropertyRepairValid(propertyRepair)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriatePropertyRepairException(
+					"Error, inappropriate property repair value(s)!"));
+			
 			return false;
+		}
 		
-		return propertyRepairRepository.add(propertyRepair);
+		try( propertyRepairRepository.add(propertyRepair);) {
+			
+			return true;
+		
+		}catch(Exception ex) {
+		
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, ex);
+			
+			return false;
+		}
 	}
 
 	/**
@@ -84,7 +149,16 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isUserValid(user) || !isAddressValid(address))
 			return false;
 		
-		return userRepository.updateAddress(address);
+		if( !userRepository.updateAddress( user.getVatNumber(), address)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriateAddressValueException(
+					"Error, inappropriate address value! (" + address + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -97,7 +171,16 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isUserValid(user) || !isEmailValid(email))
 			return false;
 		
-		return userRepository.updateEmail(email);
+		if( !userRepository.updateEmail( user.getVatNumber(), email)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriateEmailValueException(
+					"Error, inappropriate email value! (" + email + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -110,7 +193,16 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isUserValid(user) || !isPasswordValid(password))
 			return false;
 		
-		return userRepository.updatePassword(password);
+		if( !userRepository.updatePassword( user.getVatNumber(), password)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriatePasswordValueException(
+					"Error, inappropriate password value! (" + password + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -124,7 +216,17 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isPropertyValid(property) || !isAddressValid(address))
 			return false;
 		
-		return propertyRepository.updateAddress(address);
+		if( !propertyRepository.updateAddress( 
+				property.getPropertyId(), address)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, new InappropriateAddressValueException(
+					"Error, inappropriate address value! (" + address + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -140,8 +242,19 @@ public class AdminServiceImpl extends UserServiceImpl
 				!isConstructionYearValid(constructionYear))
 			return false;
 		
-		return propertyRepository.updateConstructionYear(
-				constructionYear);
+		if( !propertyRepository.updateConstructionYear( 
+				property.getPropertyId(), constructionYear)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateConstructionYearValueException(
+					"Error, inappropriate construction year value! (" 
+							+ constructionYear + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -156,8 +269,19 @@ public class AdminServiceImpl extends UserServiceImpl
 				!isPropertyTypeValid(propertyType))
 			return false;
 		
-		return propertyRepository.updatePropertyType(
-				propertyType);
+		if( !propertyRepository.updatePropertyType( 
+				property.getPropertyId(), propertyType)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriatePropertyTypeValueException(
+					"Error, inappropriate property type value! (" 
+							+ propertyType + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -172,8 +296,19 @@ public class AdminServiceImpl extends UserServiceImpl
 				!isVatNumberValid(vatNumber))
 			return false;
 		
-		return propertyRepository.updateVatNumber(
-				vatNumber);
+		if( !propertyRepository.updateVatNumber( 
+				property.getPropertyId(), vatNumber)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateVatNumberValueException(
+					"Error, inappropriate vat number value! (" 
+							+ vatNumber + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -182,14 +317,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairDateTime(
-			Property propertyRepair, LocalDate dateTime) {
+			PropertyRepair propertyRepair, LocalDate dateTime) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isDateTimeValid(dateTime))
 			return false;
 		
-		return propertyRepairRepository.updateDateTime(
-				dateTime);
+		if( !propertyRepairRepository.updateDateTime( 
+				propertyRepair.getPropertyRepairId(), dateTime)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateDateValueException(
+					"Error, inappropriate date value! (" 
+							+ dateTime + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -198,14 +344,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairSummary(
-			Property propertyRepair, String summary) {
+			PropertyRepair propertyRepair, String summary) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isSummaryValid(summary))
 			return false;
 		
-		return propertyRepairRepository.updateSummary(
-				summary);
+		if( !propertyRepairRepository.updateSummary( 
+				propertyRepair.getPropertyRepairId(), summary)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateSummaryValueException(
+					"Error, inappropriate summary value! (" 
+							+ summary + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -214,14 +371,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairType(
-			Property propertyRepair, RepairType repairType) {
+			PropertyRepair propertyRepair, RepairType repairType) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isRepairTypeValid(repairType))
 			return false;
 		
-		return propertyRepairRepository.updateRepairType(
-				repairType);
+		if( !propertyRepairRepository.updateRepairType( 
+				propertyRepair.getPropertyRepairId(), repairType)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateRepairTypeValueException(
+					"Error, inappropriate repair type value! (" 
+							+ repairType + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -230,14 +398,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairStatusType(
-			Property propertyRepair, StatusType statusType) {
+			PropertyRepair propertyRepair, StatusType statusType) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isStatusTypeValid(statusType))
 			return false;
 		
-		return propertyRepairRepository.updateStatusType(
-				statusType);
+		if( !propertyRepairRepository.updateStatusType( 
+				propertyRepair.getPropertyRepairId(), statusType)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateDateValueException(
+					"Error, inappropriate status type value! (" 
+							+ statusType + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -246,14 +425,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairCost(
-			Property propertyRepair, BigDecimal cost) {
+			PropertyRepair propertyRepair, BigDecimal cost) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isCostValid(cost))
 			return false;
 		
-		return propertyRepairRepository.updateCost(
-				cost);
+		if( !propertyRepairRepository.updateCost( 
+				propertyRepair.getPropertyRepairId(), cost)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateCostValueException(
+					"Error, inappropriate cost value! (" 
+							+ cost + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -262,14 +452,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairVatNumber(
-			Property propertyRepair, String vatNumber) {
+			PropertyRepair propertyRepair, String vatNumber) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isVatNumberValid(vatNumber))
 			return false;
 		
-		return propertyRepairRepository.updateVatNumber(
-				vatNumber);
+		if( !propertyRepairRepository.updateVatNumber( 
+				propertyRepair.getPropertyRepairId(), vatNumber)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateVatNumberValueException(
+					"Error, inappropriate vat number value! (" 
+							+ vatNumber + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -278,14 +479,25 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updatePropertyRepairDesc(
-			Property propertyRepair, String repairDesc) {
+			PropertyRepair propertyRepair, String repairDesc) {
 		
 		if( !isPropertyRepairValid(propertyRepair) || 
 				!isRepairDescValid(repairDesc))
 			return false;
 		
-		return propertyRepairRepository.updateRepairDesc(
-				repairDesc);
+		if( !propertyRepairRepository.updateRepairDesc( 
+				propertyRepair.getPropertyRepairId(), repairDesc)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+				.log( Level.SEVERE, null, 
+				new InappropriateDescriptionValueException(
+					"Error, inappropriate repair description value! (" 
+							+ repairDesc + ")"));
+			
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -298,7 +510,7 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isUserValid(user))
 			return false;
 		
-		return userRepository.delete(user);
+		return userRepository.delete(user.getUserId());
 	}
 
 	/**
@@ -311,7 +523,8 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isPropertyValid(property))
 			return false;
 		
-		return propertyRepository.delete(property);
+		return propertyRepository.delete(
+			property.getPropertyId());
 	}
 
 	/**
@@ -324,7 +537,8 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( !isPropertyRepairValid(propertyRepair))
 			return false;
 		
-		return propertyRepairRepository.delete(propertyRepair);
+		return propertyRepairRepository.delete(
+			propertyRepair.getPropertyRepairId());
 	}
 
 	/**
@@ -334,10 +548,29 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public User readUserWithVatNumber(String vatNumber) {
 
-		if( !isVatNumberValid(vatNumber))
+		if( !isVatNumberValid(vatNumber)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateVatNumberValueException(
+					"Error, inappropriate vat number value! ("
+						+ vatNumber + ")"));
+			
 			return null;
+		}
 		
-		return userRepository.readByVatNumber(vatNumber);
+		User user = userRepository.readByVatNumber(vatNumber);
+		
+		if( user == null) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return user;
 	}
 
 	/**
@@ -347,10 +580,29 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public User readUserWithEmail(String email) {
 
-		if( !isEmailValid(email))
+		if( !isEmailValid(email)) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+			.log( Level.SEVERE, null, 
+				new InappropriateEmailValueException(
+					"Error, inappropriate email value! ("
+						+ email + ")"));
+			
 			return null;
+		}
 		
-		return userRepository.readByEmail(email);
+		User user = userRepository.readByEmail(email);
+		
+		if( user == null) {
+			
+			Logger.getLogger( AdminServiceImpl.class.getName())
+			.log( Level.SEVERE, null, "Error, "
+				+ "there are no results that asserts that query!");
+			
+			return null;
+		}
+		
+		return user;
 	}
 	
 	/**
@@ -416,15 +668,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	private boolean isPropertyTypeValid(
 			PropertyType propertyType) {
-		// business logic
-		return false;
-	}
-
-	/**
-	 * 	Returns if the propertyRepair is valid.
-	 */
-	private boolean isPropertyRepairValid(
-			Property propertyRepair) {
 		// business logic
 		return false;
 	}
