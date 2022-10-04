@@ -29,7 +29,6 @@ public interface UserService {
 	List<PropertyRepair> readPropertyRepairWithVatNumber( 
 		final String vatNumber);
 	
-	boolean isPropertyIdValid( final long propertyId);
 	boolean isVatNumberValid( final String vatNumber);
-	boolean isDateTimeValid( final LocalDate dateTime);
+	boolean isDateValid( final LocalDate dateTime);
 }
