@@ -36,8 +36,7 @@ public class Property {
 	@Column(columnDefinition = "enum('DETACHED_HOUSE','MAISONETTE', 'APARTMENT_BUILDING')")
 	@Enumerated(EnumType.STRING)
 	private PropertyType propertyType;
-	@Column(length = 10)
-	private String vatNumber;
+	
 	
 	@ManyToOne
 	private User user;
@@ -51,13 +50,12 @@ public class Property {
 	}
 
 	public Property( String address, 
-			LocalDate constructionYear, PropertyType propertyType,
-			String vatNumber) {
+			LocalDate constructionYear, PropertyType propertyType) {
 		
 		this.address = address;
 		this.constructionYear = constructionYear;
 		this.propertyType = propertyType;
-		this.vatNumber = vatNumber;
+		
 	}
 
 	public long getPropertyId() {
@@ -87,14 +85,6 @@ public class Property {
 	public void setPropertyType( PropertyType propertyType) {
 		this.propertyType = propertyType;
 	}
-
-	public String getVatNumber() {
-		return vatNumber;
-	}
-
-	public void setVatNumber( String vatNumber) {
-		this.vatNumber = vatNumber;
-	}
 	
 	public User getUser() {
 		return user;
@@ -115,14 +105,13 @@ public class Property {
 	public String header() {
 		
 		return "propertyId, address, constructionYear, "
-				+ "propertyType, vatNumber";
+				+ "propertyType";
 	}
 	
 	@Override
 	public String toString() {
 		
 		return propertyId + ", " + address + ", " 
-			+ constructionYear + ", " + propertyType + ", " 
-			+ vatNumber;
+			+ constructionYear + ", " + propertyType;
 	}
 }

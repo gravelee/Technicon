@@ -33,11 +33,11 @@ public class User {
 	private String surname;
 	@Column(length = 25)
 	private String address;
-	@Column(length = 13)
+	@Column(unique = true, length = 13)
 	private String phoneNumber;
-	@Column(length = 30)
+	@Column(unique = true, length = 30)
 	private String email;
-	@Column(length = 25)
+	@Column(unique = true, length = 25)
 	private String username;
 	@Column(length = 50)
 	private String password;

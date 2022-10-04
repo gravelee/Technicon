@@ -103,42 +103,42 @@ public class RenovationContractorApp{
 		property.setAddress("Manis 15");
 		property.setConstructionYear(LocalDate.of(2020, 3, 8));
 		property.setPropertyType(PropertyType.valueOf("DETACHED_HOUSE"));
-		property.setVatNumber("abcdefghij");
+		//property.setVatNumber("abcdefghij");
 		property.setUser(user);
 		
 		Property property1 = new Property();
 		property1.setAddress("Kritis 23");
 		property1.setConstructionYear(LocalDate.of(2019, 4, 7));
 		property1.setPropertyType(PropertyType.valueOf("MAISONETTE"));
-		property1.setVatNumber("ertyuioplk");
+		//property1.setVatNumber("ertyuioplk");
 		property1.setUser(user1);
 		
 		Property property2 = new Property();
 		property2.setAddress("Varis 39");
 		property2.setConstructionYear(LocalDate.of(2018, 8, 9));
 		property2.setPropertyType(PropertyType.valueOf("APARTMENT_BUILDING"));
-		property2.setVatNumber("lkjhgfdswe");
+		//property2.setVatNumber("lkjhgfdswe");
 		property2.setUser(user3);
 		
 		Property property3 = new Property();
 		property3.setAddress("Thrakis 28");
 		property3.setConstructionYear(LocalDate.of(2017, 1, 2));
 		property3.setPropertyType(PropertyType.valueOf("APARTMENT_BUILDING"));
-		property3.setVatNumber("asdfghjklo");
+		//property3.setVatNumber("asdfghjklo");
 		property3.setUser(user2);
 		
 		Property property4 = new Property();
 		property4.setAddress("Xanthis 11");
 		property4.setConstructionYear(LocalDate.of(2021, 5, 3));
 		property4.setPropertyType(PropertyType.valueOf("MAISONETTE"));
-		property4.setVatNumber("zxcvbnmkjh");
+		//property4.setVatNumber("zxcvbnmkjh");
 		property4.setUser(user4);
 		
 		Property property5 = new Property();
 		property5.setAddress("Menelaou 8");
 		property5.setConstructionYear(LocalDate.of(2021, 10, 6));
 		property5.setPropertyType(PropertyType.valueOf("DETACHED_HOUSE"));
-		property5.setVatNumber("lkjhgfdswe");
+		//property5.setVatNumber("lkjhgfdswe");
 		property5.setUser(user3);
 		
 		
@@ -155,7 +155,7 @@ public class RenovationContractorApp{
 		propertyRepair.setRepairType(RepairType.valueOf("PLUMBING"));
 		propertyRepair.setStatusType(StatusType.valueOf("PENDING"));
 		propertyRepair.setCost(new BigDecimal("5000"));
-		propertyRepair.setVatNumber("ertyuioplk");
+		//propertyRepair.setVatNumber("ertyuioplk");
 		propertyRepair.setRepairDesc("Change pipes under floor");
 		propertyRepair.setProperty(property1);
 		
@@ -166,7 +166,7 @@ public class RenovationContractorApp{
 		propertyRepair1.setRepairType(RepairType.valueOf("ELECTRICAL_WORK"));
 		propertyRepair1.setStatusType(StatusType.valueOf("IN_PROGRESS"));
 		propertyRepair1.setCost(new BigDecimal("2350"));
-		propertyRepair1.setVatNumber("lkjhgfdswe");
+		//propertyRepair1.setVatNumber("lkjhgfdswe");
 		propertyRepair1.setRepairDesc("Change the electrical system of the kitchen");
 		propertyRepair1.setProperty(property2);
 		
@@ -176,7 +176,7 @@ public class RenovationContractorApp{
 		propertyRepair2.setRepairType(RepairType.valueOf("PAINTING"));
 		propertyRepair2.setStatusType(StatusType.valueOf("PENDING"));
 		propertyRepair2.setCost(new BigDecimal("500"));
-		propertyRepair2.setVatNumber("abcdefghij");
+		//propertyRepair2.setVatNumber("abcdefghij");
 		propertyRepair2.setRepairDesc("Change the color of the walls to green");
 		propertyRepair2.setProperty(property);
 		
@@ -186,7 +186,7 @@ public class RenovationContractorApp{
 		propertyRepair3.setRepairType(RepairType.valueOf("FRAMES"));
 		propertyRepair3.setStatusType(StatusType.valueOf("IN_PROGRESS"));
 		propertyRepair3.setCost(new BigDecimal("1200"));
-		propertyRepair3.setVatNumber("abcdefghij");
+		//propertyRepair3.setVatNumber("abcdefghij");
 		propertyRepair3.setRepairDesc("New windows throughout the whole house");
 		propertyRepair3.setProperty(property);
 		
@@ -196,7 +196,7 @@ public class RenovationContractorApp{
 		propertyRepair4.setRepairType(RepairType.valueOf("PLUMBING"));
 		propertyRepair4.setStatusType(StatusType.valueOf("COMPLETE"));
 		propertyRepair4.setCost(new BigDecimal("2500"));
-		propertyRepair4.setVatNumber("asdfghjklo");
+		//propertyRepair4.setVatNumber("asdfghjklo");
 		propertyRepair4.setRepairDesc("Changed pipes inside the bathroom under the sink");
 		propertyRepair4.setProperty(property3);
 		
@@ -206,38 +206,38 @@ public class RenovationContractorApp{
 		propertyRepair5.setRepairType(RepairType.valueOf("ELECTRICAL_WORK"));
 		propertyRepair5.setStatusType(StatusType.valueOf("IN_PROGRESS"));
 		propertyRepair5.setCost(new BigDecimal("700"));
-		propertyRepair5.setVatNumber("asdfghjklo");
+		//propertyRepair5.setVatNumber("asdfghjklo");
 		propertyRepair5.setRepairDesc("Changed pipes inside the bathroom under the sink");
 		propertyRepair5.setProperty(property3);
 		
 		
 // -------------- INSERT IN DATABASE ------------------//		
 		
-		/*
-		entityManager.getTransaction().begin();
-		entityManager.persist(user);
-		entityManager.persist(user1);
-		entityManager.persist(user2);
-		entityManager.persist(user3);
-		entityManager.persist(user4);
 		
-		entityManager.persist(property);
-		entityManager.persist(property1);
-		entityManager.persist(property2);
-		entityManager.persist(property3);
-		entityManager.persist(property4);
-		entityManager.persist(property5);
+//		entityManager.getTransaction().begin();
+//		entityManager.persist(user);
+//		entityManager.persist(user1);
+//		entityManager.persist(user2);
+//		entityManager.persist(user3);
+//		entityManager.persist(user4);
+//		
+//		entityManager.persist(property);
+//		entityManager.persist(property1);
+//		entityManager.persist(property2);
+//		entityManager.persist(property3);
+//		entityManager.persist(property4);
+//		entityManager.persist(property5);
+//		
+//		entityManager.persist(propertyRepair);
+//		entityManager.persist(propertyRepair1);
+//		entityManager.persist(propertyRepair2);
+//		entityManager.persist(propertyRepair3);
+//		entityManager.persist(propertyRepair4);
+//		entityManager.persist(propertyRepair5);
+//		
+//		entityManager.getTransaction().commit();
+//		JpaUtil.shutdown();
 		
-		entityManager.persist(propertyRepair);
-		entityManager.persist(propertyRepair1);
-		entityManager.persist(propertyRepair2);
-		entityManager.persist(propertyRepair3);
-		entityManager.persist(propertyRepair4);
-		entityManager.persist(propertyRepair5);
-		
-		entityManager.getTransaction().commit();
-		JpaUtil.shutdown();
-		*/
 		
 		
 		/*
@@ -263,14 +263,14 @@ public class RenovationContractorApp{
 		// create the services by injecting the repositories inside them,
 		// at the same time we inject the entity managers into the repositories.
 		
-		AdminService adminService = new AdminServiceImpl(
-			new DbUserRepositoryImpl( JpaUtil.getEntityManager()),
-			new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
-			new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
-		
-		UserService userService = new UserServiceImpl(
-			new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
-			new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+	AdminService adminService = new AdminServiceImpl(
+		new DbUserRepositoryImpl( JpaUtil.getEntityManager()),
+		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+	
+	UserService userService = new UserServiceImpl(
+		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
 		
 		
 		// create users and test cases ( call methods from the services)

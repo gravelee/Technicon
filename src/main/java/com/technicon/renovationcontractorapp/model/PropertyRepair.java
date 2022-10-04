@@ -39,9 +39,7 @@ public class PropertyRepair {
 	@Enumerated(EnumType.STRING)
 	private StatusType statusType;
 	private BigDecimal cost;
-	@Column(length = 10)
-	private String vatNumber;
-	//private long propertyId;
+	
 	private String repairDesc;
 	
 	@ManyToOne
@@ -54,15 +52,13 @@ public class PropertyRepair {
 
 	public PropertyRepair( LocalDate dateTime, String summary, 
 		RepairType repairType, StatusType statusType, 
-		BigDecimal cost, String vatNumber,  String repairDesc) {
+		BigDecimal cost,  String repairDesc) {
 		
 		this.dateTime = dateTime;
 		this.summary = summary;
 		this.repairType = repairType;
 		this.statusType = statusType;
-		this.cost = cost;
-		this.vatNumber = vatNumber;
-		
+		this.cost = cost;		
 		this.repairDesc = repairDesc;
 	}
 
@@ -110,14 +106,6 @@ public class PropertyRepair {
 		this.cost = cost;
 	}
 
-	public String getVatNumber() {
-		return vatNumber;
-	}
-
-	public void setVatNumber( String vatNumber) {
-		this.vatNumber = vatNumber;
-	}
-
 	public String getRepairDesc() {
 		return repairDesc;
 	}
@@ -137,13 +125,13 @@ public class PropertyRepair {
 	public String header() {
 		
 		return "propertyRepairId, dateTime, summary, repairType, statusType, cost, "
-				+ "vatNumber,  repairDesc";
+				+ "repairDesc";
 	}
 
 	@Override
 	public String toString() {
 		return "propertyRepairId=" + propertyRepairId + ", dateTime=" + dateTime + ", summary="
 				+ summary + ", repairType=" + repairType + ", statusType=" + statusType + ", cost=" + cost
-				+ ", vatNumber=" + vatNumber + ", repairDesc=" + repairDesc;
+				+ ", repairDesc=" + repairDesc;
 	}
 }
