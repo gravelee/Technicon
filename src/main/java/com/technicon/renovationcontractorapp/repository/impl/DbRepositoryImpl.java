@@ -15,7 +15,7 @@ import jakarta.persistence.EntityManager;
 */
 public abstract class DbRepositoryImpl<T,K> implements Repository<T,K>{
 
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 	
 	public DbRepositoryImpl(EntityManager entityManager) {
 		this.entityManager = entityManager;

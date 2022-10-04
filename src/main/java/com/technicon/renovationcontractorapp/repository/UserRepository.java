@@ -10,7 +10,7 @@ import com.technicon.renovationcontractorapp.model.User;
  * 	@author Grproth, skroutzzz, Chris394
  */
 public interface UserRepository extends Repository<User, Long>{
-	
+	/*
 	// read based on email, vatNumber
 	User readByVatNumber(String vatNumber);
 	User readByEmail(String email);
@@ -19,4 +19,5 @@ public interface UserRepository extends Repository<User, Long>{
 	boolean updateAddress(String vatNumber, String newAddress);
 	boolean updateEmail(String vatNumber, String newEmail);
 	boolean updatePassword(String vatNumber, String newPassword);
+	*/
 }
