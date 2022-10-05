@@ -4,6 +4,7 @@ package com.technicon.renovationcontractorapp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.technicon.renovationcontractorapp.model.Property;
 import com.technicon.renovationcontractorapp.model.PropertyRepair;
@@ -263,19 +264,20 @@ public class RenovationContractorApp{
 		// create the services by injecting the repositories inside them,
 		// at the same time we inject the entity managers into the repositories.
 		
-	AdminService adminService = new AdminServiceImpl(
-		new DbUserRepositoryImpl( JpaUtil.getEntityManager()),
-		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
-		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
-	
-	UserService userService = new UserServiceImpl(
-		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
-		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
-		
+//	AdminService adminService = new AdminServiceImpl(
+//		new DbUserRepositoryImpl( JpaUtil.getEntityManager()),
+//		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+//		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+//	
+//	UserService userService = new UserServiceImpl(
+//		new DbPropertyRepositoryImpl( JpaUtil.getEntityManager()),
+//		new DbPropertyRepairRepositoryImpl( JpaUtil.getEntityManager()));
+//		
 		
 		// create users and test cases ( call methods from the services)
-		
-		
+//		PropertyRepairRepository pRRepo = 
+//				new DbPropertyRepairRepositoryImpl(
+//					JpaUtil.getEntityManager());
 		
     }
 }
