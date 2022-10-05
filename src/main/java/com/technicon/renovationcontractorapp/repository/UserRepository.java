@@ -1,5 +1,7 @@
 package com.technicon.renovationcontractorapp.repository;
 
+import java.util.Optional;
+
 import com.technicon.renovationcontractorapp.model.User;
 
 /**
@@ -10,14 +12,15 @@ import com.technicon.renovationcontractorapp.model.User;
  * 	@author Grproth, skroutzzz, Chris394
  */
 public interface UserRepository extends Repository<User, Long>{
-	/*
+	
 	// read based on email, vatNumber
-	User readByVatNumber(String vatNumber);
-	User readByEmail(String email);
+	Optional<User> readByVatNumber(String vatNumber);
+	Optional<User> readByEmail(String email);
+	
 	
 	// updates for address, email, password
 	boolean updateAddress(String vatNumber, String newAddress);
 	boolean updateEmail(String vatNumber, String newEmail);
 	boolean updatePassword(String vatNumber, String newPassword);
-	*/
+
 }

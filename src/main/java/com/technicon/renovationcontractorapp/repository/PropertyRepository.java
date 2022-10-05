@@ -22,5 +22,4 @@ public interface PropertyRepository extends Repository<Property, Long>{
 	boolean updateAddress(long pIdNumber, String address);
 	boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears);
 	boolean updatePropertyType(long pIdNumber, PropertyType propertyType);
-	boolean updateVatNumber(long pIdNumber, String ownersVatNumber);
 }

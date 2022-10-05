@@ -275,9 +275,22 @@ public class RenovationContractorApp{
 //		
 		
 		// create users and test cases ( call methods from the services)
-//		PropertyRepairRepository pRRepo = 
-//				new DbPropertyRepairRepositoryImpl(
-//					JpaUtil.getEntityManager());
+		PropertyRepairRepository pRRepo = 
+				new DbPropertyRepairRepositoryImpl(
+					JpaUtil.getEntityManager());
+		
+		pRRepo.updateSummary(2,"Hydraulics problem");
+		
+		UserRepository uRepo = 
+				new DbUserRepositoryImpl(
+					JpaUtil.getEntityManager());
+		
+		System.out.println(uRepo.readByVatNumber("ukjhgfd").isPresent());
+		
+//		uRepo.updateAddress("asdfghjklo","Patras 123");
+//		uRepo.updateEmail("asdfghjklo", "kalispera@mail.com");
+//		uRepo.updatePassword("asdfghjklo", "123456789");
+		
 		
     }
 }

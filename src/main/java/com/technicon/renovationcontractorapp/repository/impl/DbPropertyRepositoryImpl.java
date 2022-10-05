@@ -63,19 +63,37 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 
 	@Override
 	public boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears) {
-		// TODO Auto-generated method stub
+		Optional<Property> property = read(pIdNumber);
+		if(property.isPresent()) {
+			try {
+				Property property2 = property.get();
+				property2.setConstructionYear(constructionYears);
+				entityManager.getTransaction().begin();
+				entityManager.merge(property2);
+				entityManager.getTransaction().commit();
+			} catch (Exception e) {
+				return false;
+			}
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updatePropertyType(long pIdNumber, PropertyType propertyType) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updateVatNumber(long pIdNumber, String ownersVatNumber) {
-		// TODO Auto-generated method stub
+		Optional<Property> property = read(pIdNumber);
+		if(property.isPresent()) {
+			try {
+				Property property2 = property.get();
+				property2.setPropertyType(propertyType);
+				entityManager.getTransaction().begin();
+				entityManager.merge(property2);
+				entityManager.getTransaction().commit();
+			} catch (Exception e) {
+				return false;
+			}
+			return true;
+		}
 		return false;
 	}
 		
