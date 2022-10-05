@@ -1,6 +1,7 @@
 package com.technicon.renovationcontractorapp.repository.impl;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import com.technicon.renovationcontractorapp.domain.PropertyType;
@@ -8,6 +9,7 @@ import com.technicon.renovationcontractorapp.model.Property;
 import com.technicon.renovationcontractorapp.repository.PropertyRepository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 /**
 * 	This is the implementation of the PropertyRepository interface.
@@ -23,6 +25,14 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 		super(entityManager);
 	}
 	
+	@Override
+	public List<Property> readByVatNumber(String vatNumber) {
+		String selectString = "select * from Property p inner join user u on p.user_userId=u.userId where u.vatNumber=?1";
+		Query sqlQuery = entityManager.createNativeQuery(selectString, Property.class);
+		sqlQuery.setParameter(1, vatNumber);
+		return sqlQuery.getResultList();
+	}
+
 	@Override
 	public String getEntityClassName() {
 		return Property.class.getName();
@@ -51,7 +61,6 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 		return false;
 	}
 
-
 	@Override
 	public boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears) {
 		// TODO Auto-generated method stub
@@ -69,7 +78,5 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
+		
 }
