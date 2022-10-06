@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.technicon.renovationcontractorapp.domain.PropertyType;
@@ -544,67 +543,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	}
 
 	/**
-	 * 	Updates the property with the new vat number if 
-	 * 	the property and the vat number are valid.
-	 */
-	@Override
-	public boolean updatePropertyVatNumber(
-			Property property, String vatNumber) {
-		
-		if( !isPropertyValid(property)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyException(
-						"Error, inappropriate property value(s)! ("
-							+ property.toString() + ")"));
-			
-			return false;
-		}
-		
-		if( !isVatNumberValid(vatNumber)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriateVatNumberValueException(
-						"Error, inappropriate vat number value! ("
-							+ vatNumber + ")"));
-			
-			return false;
-		}
-		
-		boolean updated;
-		
-		try{
-			
-			updated =  propertyRepository.updateVatNumber(
-				property.getPropertyId(),vatNumber);
-		
-		}catch(Exception ex) {
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, ex);
-			
-			return false;
-		}
-		
-		if(!updated) {
-
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.INFO, null, "Error, "
-					+ "something went wrong with update!");
-			
-			return false;
-		}
-		
-		Logger.getLogger( AdminServiceImpl.class.getName())
-			.log( Level.INFO, null, "Success, "
-				+ "porperty has been updated successfully!");
-		
-		return true;
-	}
-
-	/**
 	 * 	Updates the property repair with the new dateTime 
 	 * 	if the property repair and the dateTime are valid.
 	 */
@@ -877,67 +815,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	}
 
 	/**
-	 * 	Updates the property repair with the new vatNumber 
-	 * 	if the property repair and the vatNumber are valid.
-	 */
-	@Override
-	public boolean updatePropertyRepairVatNumber(
-			PropertyRepair propertyRepair, String vatNumber) {
-
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
-		if( !isVatNumberValid(vatNumber)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriateVatNumberValueException(
-						"Error, inappropriate vat number value! ("
-							+ vatNumber + ")"));
-			
-			return false;
-		}
-		
-		boolean updated;
-		
-		try{
-			
-			updated =  propertyRepairRepository.updateVatNumber(
-				propertyRepair.getPropertyRepairId(),vatNumber);
-		
-		}catch(Exception ex) {
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, ex);
-			
-			return false;
-		}
-		
-		if(!updated) {
-
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.INFO, null, "Error, "
-					+ "something went wrong with update!");
-			
-			return false;
-		}
-		
-		Logger.getLogger( AdminServiceImpl.class.getName())
-			.log( Level.INFO, null, "Success, "
-				+ "porperty repair has been updated successfully!");
-		
-		return true;
-	}
-
-	/**
 	 * 	Updates the property repair with the new repairDesc 
 	 * 	if the property repair and the repairDesc are valid.
 	 */
@@ -1152,7 +1029,7 @@ public class AdminServiceImpl extends UserServiceImpl
 			return null;
 		}
 		
-		Optional<User> user;
+		Optional<User> user = null;
 		
 		try {
 			
@@ -1194,7 +1071,7 @@ public class AdminServiceImpl extends UserServiceImpl
 			return null;
 		}
 		
-		Optional<User> user;
+		Optional<User> user = null;
 		
 		try {
 			
@@ -1304,5 +1181,17 @@ public class AdminServiceImpl extends UserServiceImpl
 	private boolean isCostValid(BigDecimal cost) {
 		
 		return (cost.compareTo(BigDecimal.ZERO)>0);
+	}
+
+	@Override
+	public boolean updatePropertyVatNumber(Property property, String vatNumber) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updatePropertyRepairVatNumber(PropertyRepair propertyRepair, String vatNumber) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

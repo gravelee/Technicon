@@ -20,7 +20,7 @@ import com.technicon.renovationcontractorapp.model.PropertyRepair;
 public interface UserService {
 
 	Property readPropertyWithId( final long propertyId);
-	Property readPropertyWithVatNumber( final String vatNumber);
+	List<Property> readPropertyWithVatNumber( final String vatNumber);
 	
 	List<PropertyRepair> readPropertyRepairWithDate( 
 		final LocalDate dateTime);

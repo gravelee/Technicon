@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.technicon.renovationcontractorapp.exception.InappropriateDateValueException;
-import com.technicon.renovationcontractorapp.exception.InappropriateEmailValueException;
 import com.technicon.renovationcontractorapp.exception.InappropriateVatNumberValueException;
 import com.technicon.renovationcontractorapp.model.Property;
 import com.technicon.renovationcontractorapp.model.PropertyRepair;
@@ -71,11 +70,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	/**
-	 * 	Returns the property with the specific vat 
+	 * 	Returns the properties with the specific vat 
 	 * 	number, otherwise returns null.
 	 */
 	@Override
-	public Property readPropertyWithVatNumber( String vatNumber) {
+	public List<Property> readPropertyWithVatNumber( String vatNumber) {
 		
 		if( !isVatNumberValid(vatNumber)) {
 			
@@ -88,11 +87,11 @@ public class UserServiceImpl implements UserService{
 			return null;
 		}
 		
-		Optional<Property> property = null;
+		List<Property> propertyList = null;
 		
 		try {
 			
-			property = propertyRepository.readByVatNumber(vatNumber);
+			propertyList = propertyRepository.readByVatNumber(vatNumber);
 			
 		}catch(Exception ex) {
 			
@@ -100,7 +99,7 @@ public class UserServiceImpl implements UserService{
 				.log( Level.WARNING, null, ex);
 		}
 		
-		if( !property.isPresent()) {
+		if( !propertyList.isEmpty()) {
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.INFO, null, "Error, "
@@ -109,7 +108,7 @@ public class UserServiceImpl implements UserService{
 			return null;
 		}
 		
-		return property.get();
+		return propertyList;
 	}
 
 	/**
