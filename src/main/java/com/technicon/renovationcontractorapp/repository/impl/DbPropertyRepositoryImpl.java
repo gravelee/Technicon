@@ -44,7 +44,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 	}
 
 	@Override
-	public boolean updateAddress(long pIdNumber, String address) {
+	public boolean updateAddress(long pIdNumber, String address) throws Exception{
 		Optional<Property> property = read(pIdNumber);
 		if(property.isPresent()) {
 			try {
@@ -54,7 +54,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 				entityManager.merge(property2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -62,7 +62,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 	}
 
 	@Override
-	public boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears) {
+	public boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears) throws Exception{
 		Optional<Property> property = read(pIdNumber);
 		if(property.isPresent()) {
 			try {
@@ -72,7 +72,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 				entityManager.merge(property2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -80,7 +80,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 	}
 
 	@Override
-	public boolean updatePropertyType(long pIdNumber, PropertyType propertyType) {
+	public boolean updatePropertyType(long pIdNumber, PropertyType propertyType) throws Exception{
 		Optional<Property> property = read(pIdNumber);
 		if(property.isPresent()) {
 			try {
@@ -90,7 +90,7 @@ public class DbPropertyRepositoryImpl extends DbRepositoryImpl<Property,Long>
 				entityManager.merge(property2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}

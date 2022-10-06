@@ -19,8 +19,8 @@ public interface UserRepository extends Repository<User, Long>{
 	
 	
 	// updates for address, email, password
-	boolean updateAddress(String vatNumber, String newAddress);
-	boolean updateEmail(String vatNumber, String newEmail);
-	boolean updatePassword(String vatNumber, String newPassword);
+	boolean updateAddress(String vatNumber, String newAddress) throws Exception;
+	boolean updateEmail(String vatNumber, String newEmail) throws Exception;
+	boolean updatePassword(String vatNumber, String newPassword) throws Exception;
 
 }

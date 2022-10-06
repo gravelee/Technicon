@@ -23,11 +23,11 @@ public interface PropertyRepairRepository extends Repository<PropertyRepair, Lon
 	List<PropertyRepair> readByVatNumber(String vatNumber);
 	
 	// updates for datetime, summary, repairType, statusType, cost, repairDesc
-	boolean updateDateTime(long propertyRepairId,LocalDate dateTime);
-	boolean updateSummary(long propertyRepairId,String summary);
-	boolean updateRepairType(long propertyRepairId,RepairType repairType);
-	boolean updateStatusType(long propertyRepairId,StatusType statusType);
-	boolean updateCost(long propertyRepairId,BigDecimal cost);
-	boolean updateRepairDesc(long propertyRepairId,String repairDesc);
+	boolean updateDateTime(long propertyRepairId,LocalDate dateTime) throws Exception;
+	boolean updateSummary(long propertyRepairId,String summary) throws Exception;
+	boolean updateRepairType(long propertyRepairId,RepairType repairType) throws Exception;
+	boolean updateStatusType(long propertyRepairId,StatusType statusType) throws Exception;
+	boolean updateCost(long propertyRepairId,BigDecimal cost) throws Exception;
+	boolean updateRepairDesc(long propertyRepairId,String repairDesc) throws Exception;
 	
 }

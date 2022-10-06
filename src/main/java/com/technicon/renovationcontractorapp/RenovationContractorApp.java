@@ -279,7 +279,7 @@ public class RenovationContractorApp{
 				new DbPropertyRepairRepositoryImpl(
 					JpaUtil.getEntityManager());
 		
-		pRRepo.updateSummary(2,"Hydraulics problem");
+		//pRRepo.updateSummary(2,"Hydraulics problem");
 		
 		UserRepository uRepo = 
 				new DbUserRepositoryImpl(

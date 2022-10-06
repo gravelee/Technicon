@@ -15,11 +15,11 @@ import com.technicon.renovationcontractorapp.model.Property;
  */
 public interface PropertyRepository extends Repository<Property, Long>{
     
-	
+	//read all properties a user owns by its vat number
 	List<Property> readByVatNumber(String vatNumber);
 	
 	// updates for pIdNumber, address, constructionYears, propertyType, ownersVatNumber
-	boolean updateAddress(long pIdNumber, String address);
-	boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears);
-	boolean updatePropertyType(long pIdNumber, PropertyType propertyType);
+	boolean updateAddress(long pIdNumber, String address) throws Exception;
+	boolean updateConstructionYear(long pIdNumber, LocalDate constructionYears) throws Exception;
+	boolean updatePropertyType(long pIdNumber, PropertyType propertyType) throws Exception;
 }

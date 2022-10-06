@@ -6,6 +6,7 @@ import com.technicon.renovationcontractorapp.model.User;
 import com.technicon.renovationcontractorapp.repository.UserRepository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 
 /**
@@ -47,7 +48,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 	}
 	
 	@Override
-	public boolean updateAddress(String vatNumber, String newAddress) {
+	public boolean updateAddress (String vatNumber, String newAddress) throws Exception{
 		Optional<User> user = readByVatNumber(vatNumber);
 		if(user.isPresent()) {
 			try {
@@ -57,7 +58,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 				entityManager.merge(user2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -65,7 +66,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 	}
 
 	@Override
-	public boolean updateEmail(String vatNumber, String newEmail) {
+	public boolean updateEmail(String vatNumber, String newEmail) throws Exception{
 		Optional<User> user = readByVatNumber(vatNumber);
 		if(user.isPresent()) {
 			try {
@@ -75,7 +76,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 				entityManager.merge(user2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -83,7 +84,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 	}
 
 	@Override
-	public boolean updatePassword(String vatNumber, String newPassword) {
+	public boolean updatePassword(String vatNumber, String newPassword) throws Exception{
 		Optional<User> user = readByVatNumber(vatNumber);
 		if(user.isPresent()) {
 			try {
@@ -93,7 +94,7 @@ public class DbUserRepositoryImpl extends DbRepositoryImpl<User,Long>
 				entityManager.merge(user2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}

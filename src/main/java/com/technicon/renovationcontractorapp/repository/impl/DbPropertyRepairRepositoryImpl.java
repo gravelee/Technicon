@@ -55,7 +55,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateDateTime(long propertyRepairId, LocalDate dateTime) {
+	public boolean updateDateTime(long propertyRepairId, LocalDate dateTime) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -65,7 +65,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -73,7 +73,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateSummary(long propertyRepairId, String summary) {
+	public boolean updateSummary(long propertyRepairId, String summary) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -83,7 +83,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -91,7 +91,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateRepairType(long propertyRepairId, RepairType repairType) {
+	public boolean updateRepairType(long propertyRepairId, RepairType repairType) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -101,7 +101,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -109,7 +109,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateStatusType(long propertyRepairId, StatusType statusType) {
+	public boolean updateStatusType(long propertyRepairId, StatusType statusType) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -119,7 +119,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -127,7 +127,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateCost(long propertyRepairId, BigDecimal cost) {
+	public boolean updateCost(long propertyRepairId, BigDecimal cost) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -137,7 +137,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
@@ -145,7 +145,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 
 	@Override
-	public boolean updateRepairDesc(long propertyRepairId, String repairDesc) {
+	public boolean updateRepairDesc(long propertyRepairId, String repairDesc) throws Exception{
 		Optional<PropertyRepair> propertyRepair = read(propertyRepairId);
 		if(propertyRepair.isPresent()) {
 			try {
@@ -155,7 +155,7 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 				entityManager.merge(propertyRepair2);
 				entityManager.getTransaction().commit();
 			} catch (Exception e) {
-				return false;
+				throw new Exception(e);
 			}
 			return true;
 		}
