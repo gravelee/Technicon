@@ -196,17 +196,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean updateUserAddress(User user, String address) {
 		
-		if( !isUserValid(user)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriateUserException(
-						"Error, inappropriate user value(s)! ("
-							+ user.toString() + ")"));
-			
-			return false;
-		}
-		
 		if( !isAddressValid(address)){
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
@@ -255,17 +244,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	 */
 	@Override
 	public boolean updateUserEmail(User user, String email) {
-		
-		if( !isUserValid(user)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriateUserException(
-						"Error, inappropriate user value(s)! ("
-							+ user.toString() + ")"));
-			
-			return false;
-		}
 		
 		if( !isEmailValid(email)){
 			
@@ -316,17 +294,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean updateUserPassword(User user, String password) {
 		
-		if( !isUserValid(user)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-			.log( Level.WARNING, null, 
-				new InappropriateUserException(
-					"Error, inappropriate user value(s)! ("
-						+ user.toString() + ")"));
-			
-			return false;
-		}
-		
 		if( !isPasswordValid(password)){
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
@@ -376,17 +343,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean updatePropertyAddress(
 			Property property, String address) {
-		
-		if( !isPropertyValid(property)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-			.log( Level.WARNING, null, 
-				new InappropriatePropertyException(
-					"Error, inappropriate property value(s)! ("
-						+ property.toString() + ")"));
-			
-			return false;
-		}
 		
 		if( !isAddressValid(address)){
 			
@@ -439,17 +395,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyConstructionYear(
 			Property property, LocalDate constructionYear) {
 
-		if( !isPropertyValid(property)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyException(
-						"Error, inappropriate property value(s)! ("
-							+ property.toString() + ")"));
-			
-			return false;
-		}
-		
 		if( !isDateValid(constructionYear)){
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
@@ -500,17 +445,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyType(Property property, 
 			PropertyType propertyType) {
 
-		if( !isPropertyValid(property)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyException(
-						"Error, inappropriate property value(s)! ("
-							+ property.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean updated;
 		
 		try{
@@ -549,17 +483,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean updatePropertyRepairDateTime(
 			PropertyRepair propertyRepair, LocalDate date) {
-		
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
 		
 		if( !isDateValid(date)){
 			
@@ -611,17 +534,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyRepairSummary(
 			PropertyRepair propertyRepair, String summary) {
 		
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean updated;
 		
 		try{
@@ -660,17 +572,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean updatePropertyRepairType(
 			PropertyRepair propertyRepair, RepairType repairType) {
-		
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
 		
 		boolean updated;
 		
@@ -711,17 +612,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyRepairStatusType(
 			PropertyRepair propertyRepair, StatusType statusType) {
 
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean updated;
 		
 		try{
@@ -761,17 +651,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyRepairCost(
 			PropertyRepair propertyRepair, BigDecimal cost) {
 
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
 		if( !isCostValid(cost)){
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
@@ -822,17 +701,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	public boolean updatePropertyRepairDesc(
 			PropertyRepair propertyRepair, String repairDesc) {
 
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean updated;
 		
 		try{
@@ -871,17 +739,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean deleteUser(User user) {
 
-		if( !isUserValid(user)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriateUserException(
-						"Error, inappropriate user value(s)! ("
-							+ user.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean deleted;
 		
 		try {
@@ -920,17 +777,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean deleteProperty(Property property) {
 
-		if( !isPropertyValid(property)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyException(
-						"Error, inappropriate property value(s)! ("
-							+ property.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean deleted;
 		
 		try {
@@ -969,17 +815,6 @@ public class AdminServiceImpl extends UserServiceImpl
 	@Override
 	public boolean deletePropertyRepair(PropertyRepair propertyRepair) {
 
-		if( !isPropertyRepairValid(propertyRepair)){
-			
-			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, 
-					new InappropriatePropertyRepairException(
-						"Error, inappropriate property repair value(s)! ("
-							+ propertyRepair.toString() + ")"));
-			
-			return false;
-		}
-		
 		boolean deleted;
 		
 		try {
