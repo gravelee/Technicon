@@ -874,6 +874,8 @@ public class AdminServiceImpl extends UserServiceImpl
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
 		if( !user.isPresent()) {
@@ -916,6 +918,8 @@ public class AdminServiceImpl extends UserServiceImpl
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
 		if( !user.isPresent()) {
@@ -938,7 +942,8 @@ public class AdminServiceImpl extends UserServiceImpl
 		if( isVatNumberValid(user.getVatNumber()) &&
 			isAddressValid(user.getAddress()) &&
 				isEmailValid(user.getEmail()) &&
-					isPasswordValid(user.getPassword())){
+				isPasswordValid(user.getPassword()) &&
+				isPhoneNumberValid(user.getPhoneNumber())){
 			
 			return true;
 		}
@@ -985,6 +990,7 @@ public class AdminServiceImpl extends UserServiceImpl
         Pattern pattern = Pattern.compile(regex);
         
         return pattern.matcher(address).matches();
+        
 	}
 	
 	/**
@@ -996,6 +1002,7 @@ public class AdminServiceImpl extends UserServiceImpl
         Pattern pattern = Pattern.compile(regex);
         
         return pattern.matcher(email).matches();
+        
 	}
 
 	/**
@@ -1009,6 +1016,17 @@ public class AdminServiceImpl extends UserServiceImpl
         
         return pattern.matcher(password).matches();
 	}
+	
+	/**
+	 * 	Returns if the phone number is valid.
+	 */
+	public boolean isPhoneNumberValid( String phoneNumber) {
+		
+		String regex = "^\\d{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        return pattern.matcher(phoneNumber).matches();
+	}
 
 	/**
 	 * 	Returns if the cost is valid.
@@ -1016,17 +1034,5 @@ public class AdminServiceImpl extends UserServiceImpl
 	private boolean isCostValid(BigDecimal cost) {
 		
 		return (cost.compareTo(BigDecimal.ZERO)>0);
-	}
-
-	@Override
-	public boolean updatePropertyVatNumber(Property property, String vatNumber) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updatePropertyRepairVatNumber(PropertyRepair propertyRepair, String vatNumber) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

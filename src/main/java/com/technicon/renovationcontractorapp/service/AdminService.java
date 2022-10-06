@@ -30,14 +30,12 @@ public interface AdminService extends UserService {
 	boolean updatePropertyAddress( final Property property, final String address);
 	boolean updatePropertyConstructionYear( final Property property, final LocalDate constructionYear);
 	boolean updatePropertyType( final Property property, final PropertyType propertyType);
-	boolean updatePropertyVatNumber( final Property property, final String vatNumber);
 	
 	boolean updatePropertyRepairDateTime( final PropertyRepair propertyRepair, final LocalDate dateTime);
 	boolean updatePropertyRepairSummary( final PropertyRepair propertyRepair, final String summary);
 	boolean updatePropertyRepairType( final PropertyRepair propertyRepair, final RepairType repairType);
 	boolean updatePropertyRepairStatusType( final PropertyRepair propertyRepair, final StatusType statusType);
 	boolean updatePropertyRepairCost( final PropertyRepair propertyRepair, final BigDecimal cost);
-	boolean updatePropertyRepairVatNumber( final PropertyRepair propertyRepair, final String vatNumber);
 	boolean updatePropertyRepairDesc( final PropertyRepair propertyRepair, final String repairDesc);
 	
 	boolean deleteUser( final User user);

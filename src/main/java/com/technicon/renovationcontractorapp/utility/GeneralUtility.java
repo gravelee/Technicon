@@ -27,7 +27,7 @@ public class GeneralUtility {
      *  @return List of String arrays.  ( the data returned in a list)
      */
     @SuppressWarnings("resource")
-	public static List<String[]> readCsvFile( final String fileName) {
+	private static List<String[]> readCsvFile( final String fileName) {
         
         List<String[]> list = new ArrayList<>();
         BufferedReader br;

@@ -1,16 +1,18 @@
 package com.technicon.renovationcontractorapp.service.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import com.technicon.renovationcontractorapp.exception.InappropriateDateValueException;
+import com.technicon.renovationcontractorapp.exception.InappropriateIdValueException;
 import com.technicon.renovationcontractorapp.exception.InappropriateVatNumberValueException;
 import com.technicon.renovationcontractorapp.model.Property;
 import com.technicon.renovationcontractorapp.model.PropertyRepair;
-import com.technicon.renovationcontractorapp.model.User;
 import com.technicon.renovationcontractorapp.repository.PropertyRepairRepository;
 import com.technicon.renovationcontractorapp.repository.PropertyRepository;
 import com.technicon.renovationcontractorapp.service.UserService;
@@ -45,6 +47,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Property readPropertyWithId( long propertyId) {
 		
+		if( !isIdValid(propertyId)) {
+			
+			Logger.getLogger( UserServiceImpl.class.getName())
+				.log( Level.WARNING, null, 
+					new InappropriateIdValueException(
+						"Error, inappropriate id value! ("
+							+ propertyId + ")"));
+			
+			return null;
+		}
+		
 		Optional<Property> property = null;
 		
 		try {
@@ -54,7 +67,9 @@ public class UserServiceImpl implements UserService{
 		}catch(Exception ex) {
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
-				.log( Level.WARNING, null, ex);
+				.log( Level.WARNING, ex.getMessage(), ex);
+			
+			return null;
 		}
 		
 		if( !property.isPresent()) {
@@ -87,7 +102,7 @@ public class UserServiceImpl implements UserService{
 			return null;
 		}
 		
-		List<Property> propertyList = null;
+		List<Property> propertyList = new ArrayList<>();
 		
 		try {
 			
@@ -97,9 +112,11 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
-		if( !propertyList.isEmpty()) {
+		if( propertyList.isEmpty()) {
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.INFO, null, "Error, "
@@ -140,6 +157,8 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
 		if( propertyRepairList.isEmpty()) {
@@ -195,6 +214,8 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
 		if( propertyRepairList.isEmpty()) {
@@ -239,6 +260,8 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
+			
+			return null;
 		}
 		
 		if( propertyRepairList.isEmpty()) {
@@ -252,6 +275,14 @@ public class UserServiceImpl implements UserService{
 		
 		return propertyRepairList;
 	}
+	
+	/**
+	 * 	Returns if the id is valid.
+	 */
+	public boolean isIdValid( long id) {
+		
+		return (id>0);
+	}
 
 	/**
 	 * 	Returns if the vat number is valid.
@@ -259,20 +290,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean isVatNumberValid( String vatNumber) {
 		
-		try{
-			
-			Integer.parseInt(vatNumber);
-			return (vatNumber.length() == User.VAT_NUMBER_LENGTH);
-		
-		}catch(NumberFormatException ex) {
-			
-			Logger.getLogger( UserServiceImpl.class.getName())
-				.log( Level.WARNING, null, new NumberFormatException(
-					"Error, incorrect format of vat number! ("
-						+ vatNumber + ")"));
-			
-			return false;
-		}
+		String regex = "^\\d{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        return pattern.matcher(vatNumber).matches();
 	}
 
 	/**

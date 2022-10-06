@@ -29,7 +29,7 @@ public class Property {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long propertyId;
 	
-	@Column(length = 25)
+	@Column(name= "propertyAddress",length = 25)
 	private String address;
 	private LocalDate constructionYear;
 	
