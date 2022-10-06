@@ -111,7 +111,7 @@ public class Property {
 	@Override
 	public String toString() {
 		
-		return propertyId + ", " + address + ", " 
-			+ constructionYear + ", " + propertyType;
+		return "propertyId=" + propertyId + ", address=" + address + ", constructionYear=" 
+			+ constructionYear + ", propertyType=" + propertyType;
 	}
 }

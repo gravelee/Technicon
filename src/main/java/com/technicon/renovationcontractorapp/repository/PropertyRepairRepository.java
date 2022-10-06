@@ -18,9 +18,9 @@ import com.technicon.renovationcontractorapp.model.PropertyRepair;
 public interface PropertyRepairRepository extends Repository<PropertyRepair, Long> {
     
 	// read based on dateTime, vatNumber
-	List<PropertyRepair> readByDate(LocalDate dateTime);
-	List<PropertyRepair> readByDates(LocalDate dateTime1,LocalDate dateTime2);
-	List<PropertyRepair> readByVatNumber(String vatNumber);
+	List<PropertyRepair> readByDate(LocalDate dateTime) throws Exception;
+	List<PropertyRepair> readByDates(LocalDate dateTime1,LocalDate dateTime2) throws Exception;
+	List<PropertyRepair> readByVatNumber(String vatNumber) throws Exception;
 	
 	// updates for datetime, summary, repairType, statusType, cost, repairDesc
 	boolean updateDateTime(long propertyRepairId,LocalDate dateTime) throws Exception;

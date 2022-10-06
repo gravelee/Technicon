@@ -56,7 +56,7 @@ public class GeneralUtility {
      *  We load the data of a .csv file and then we write them into the 
      *  user list.
      */
-    public List<User> loadUserData() {
+    public static List<User> loadUserData() {
         
         List<String[]> list = GeneralUtility.readCsvFile(USER_FILE_NAME);
         
@@ -89,7 +89,7 @@ public class GeneralUtility {
      *  We load the data of a .csv file and then we write them into the 
      *  user list.
      */
-    public List<Property> loadPropertyData() {
+    public static List<Property> loadPropertyData() {
         
         List<String[]> list = GeneralUtility.readCsvFile(PROPERTIES_FILE_NAME);
         
@@ -103,7 +103,7 @@ public class GeneralUtility {
 
         	address = temp[0];
         	constructionYear = LocalDate.parse(temp[1]);
-        	propertyType = PropertyType.valueOf(temp[1]);
+        	propertyType = PropertyType.valueOf(temp[2]);
         	
             properties.add( new Property( address, 
             	constructionYear, propertyType));
@@ -117,7 +117,7 @@ public class GeneralUtility {
      *  We load the data of a .csv file and then we write them into the 
      *  user list.
      */
-    public List<PropertyRepair> loadRepairsData() {
+    public static List<PropertyRepair> loadRepairData() {
         
         List<String[]> list = GeneralUtility.readCsvFile(PROPERTY_REPAIRS_FILE_NAME);
         
@@ -134,8 +134,8 @@ public class GeneralUtility {
         	summary = temp[1];
         	repairType = RepairType.valueOf(temp[2]);
         	statusType = StatusType.valueOf(temp[3]);
-        	cost = BigDecimal.valueOf(Double.parseDouble(temp[3]));
-        	repairDesc = temp[4];
+        	cost = BigDecimal.valueOf(Double.parseDouble(temp[4]));
+        	repairDesc = temp[5];
         	
         	repairs.add( new PropertyRepair( dateTime, summary, repairType,
         			statusType,cost,repairDesc));

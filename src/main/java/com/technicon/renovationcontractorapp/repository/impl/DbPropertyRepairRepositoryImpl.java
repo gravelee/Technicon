@@ -27,30 +27,42 @@ public class DbPropertyRepairRepositoryImpl extends DbRepositoryImpl<PropertyRep
 	}
 	
 	@Override
-	public List<PropertyRepair> readByDate(LocalDate dateTime) {
+	public List<PropertyRepair> readByDate(LocalDate dateTime) throws Exception {
 		String selectString = "select * from propertyrepair where dateTime=?1";
 		Query sqlQuery = entityManager.createNativeQuery(selectString, PropertyRepair.class);
-		sqlQuery.setParameter(1, dateTime);
+		try {
+			sqlQuery.setParameter(1, dateTime);
+		} catch(Exception e){
+			throw new Exception(e);
+		}
 		return sqlQuery.getResultList();
 	}
 
 	@Override
-	public List<PropertyRepair> readByDates(LocalDate dateTime1, LocalDate dateTime2) {
+	public List<PropertyRepair> readByDates(LocalDate dateTime1, LocalDate dateTime2) throws Exception {
 		String selectString = "select * from propertyrepair where dateTime >= ?1 and dateTime <= ?2";
 		Query sqlQuery = entityManager.createNativeQuery(selectString, PropertyRepair.class);
-		sqlQuery.setParameter(1, dateTime1);
-		sqlQuery.setParameter(2, dateTime2);
+		try {
+			sqlQuery.setParameter(1, dateTime1);
+			sqlQuery.setParameter(2, dateTime2);
+		} catch(Exception e) {
+			throw new Exception(e);
+		}
 		return sqlQuery.getResultList();
 	}
     
 	@Override
-	public List<PropertyRepair> readByVatNumber(String vatNumber) {
+	public List<PropertyRepair> readByVatNumber(String vatNumber) throws Exception {
 		String selectString = "select * from propertyrepair pr "
 				+ " inner join property p on pr.property_propertyId=p.propertyId"
 				+ " inner join user u on p.user_userId = u.userId"
 				+ " where u.vatNumber=?1";
 		Query sqlQuery = entityManager.createNativeQuery(selectString, PropertyRepair.class);
-		sqlQuery.setParameter(1, vatNumber);
+		try {
+			sqlQuery.setParameter(1, vatNumber);
+		} catch(Exception e) {
+			throw new Exception(e);
+		}
 		return sqlQuery.getResultList();
 	}
 

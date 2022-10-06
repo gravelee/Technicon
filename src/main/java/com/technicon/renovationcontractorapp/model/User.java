@@ -164,8 +164,8 @@ public class User {
 	@Override
 	public String toString() {
 		
-		return userId + ", " + name + ", " + surname + ", " 
-			+ address + ", " + phoneNumber + ", " + email + ", "
-			+ username + ", " + password + ", " + vatNumber + ", " + isAdmin;
+		return "userId=" + userId + ", name=" + name + ", surname=" + surname + ", address=" 
+			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + ", username="
+			+ username + ", password=" + password + ", vatNumber=" + vatNumber + ", isAdmin=" + isAdmin;
 	}
 }
