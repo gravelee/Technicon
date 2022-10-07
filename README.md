@@ -49,7 +49,7 @@ ENTITY_TO_BE_CHANGED    KEY_ATTRIBUTE
 This is the basic functionality or our application so far.
 
 
-INSTALATION
+INSTALLATION
 
 Now in order to clone the project and run it you need to do a 
 couple of things first.
@@ -77,6 +77,14 @@ couple of things first.
    Then click next and finish and there you go. If you handle 
    through github you need to copy paste the projects files to your 
    IDEs project folder.
+   
+   
+RUNNING
+
+	Uncomment the code of RenovationContractorApp and change the persistance
+	to create and comment the actual queries. Then comment the code that
+	imports the data from csv to database and uncomment the queries, set
+	the persistance to update and you are ready to go! 
 
 
 That is it! Thank you for using Technicon application.

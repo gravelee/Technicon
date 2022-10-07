@@ -143,7 +143,7 @@ public class UserServiceImpl implements UserService{
 					new InappropriateDateValueException(
 						"Error, inappropriate date value! ("
 							+ date + ")"));
-			
+			System.out.println("date not valid");
 			return null;
 		}
 		
@@ -157,7 +157,7 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
-			
+			System.out.println("database error");
 			return null;
 		}
 		
@@ -166,7 +166,7 @@ public class UserServiceImpl implements UserService{
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.INFO, null, "Error, "
 					+ "there are no results that assert that query!");
-			
+			System.out.println("empty result list");
 			return null;
 		}
 		
@@ -188,7 +188,7 @@ public class UserServiceImpl implements UserService{
 					new InappropriateDateValueException(
 						"Error, inappropriate date value! ("
 							+ dateTimeFirst + ")"));
-			
+			System.out.println("date not valid");
 			return null;
 		}
 		
@@ -199,7 +199,7 @@ public class UserServiceImpl implements UserService{
 					new InappropriateDateValueException(
 						"Error, inappropriate date value! ("
 							+ dateTimeSecond + ")"));
-			
+			System.out.println("date not valid");
 			return null;
 		}
 		
@@ -214,7 +214,7 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
-			
+			System.out.println("database error");
 			return null;
 		}
 		
@@ -223,7 +223,7 @@ public class UserServiceImpl implements UserService{
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.INFO, null, "Error, "
 					+ "there are no results that assert that query!");
-			
+			System.out.println("empty resul list");
 			return null;
 		}
 		
@@ -245,7 +245,7 @@ public class UserServiceImpl implements UserService{
 					new InappropriateVatNumberValueException(
 						"Error, inappropriate vat number value! ("
 							+ vatNumber + ")"));
-			
+			System.out.println("vat number not valid");
 			return null;
 		}
 		
@@ -260,7 +260,7 @@ public class UserServiceImpl implements UserService{
 			
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.WARNING, null, ex);
-			
+			System.out.println("database error");
 			return null;
 		}
 		
@@ -269,7 +269,7 @@ public class UserServiceImpl implements UserService{
 			Logger.getLogger( AdminServiceImpl.class.getName())
 				.log( Level.INFO, null, "Error, "
 					+ "there are no results that assert that query!");
-			
+			System.out.println("empty result list");
 			return null;
 		}
 		
