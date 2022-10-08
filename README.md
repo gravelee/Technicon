@@ -82,9 +82,9 @@ couple of things first.
 RUNNING
 
 	Uncomment the code of RenovationContractorApp and change the persistance
-	to create and comment the actual queries. Then comment the code that
+	to create and comment the actual queries. Run the application file. Then comment the code that
 	imports the data from csv to database and uncomment the queries, set
-	the persistance to update and you are ready to go! 
+	the persistance to update. Run the code and the queries will run smoothly.
 
 
 That is it! Thank you for using Technicon application.
